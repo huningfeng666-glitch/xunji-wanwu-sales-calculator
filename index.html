@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>寻迹万物销售测算台</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="./assets/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+
+      <!-- ========== 头部 ========== -->
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">瓦</div>
+          <div>
+            <h1>寻迹万物销售测算台</h1>
+            <p>成本 · 场景评级 · 定价 · 采购/寄售 · 提成</p>
+          </div>
+        </div>
+
+        <nav class="view-tabs" aria-label="主视图">
+          <button type="button" class="active" data-view-target="cost">成本测算</button>
+          <button type="button" data-view-target="scenario">场景评级</button>
+          <button type="button" data-view-target="pricing">定价测算</button>
+          <button type="button" data-view-target="records">测算记录</button>
+          <button type="button" data-view-target="products">产品库</button>
+          <button type="button" data-view-target="settings">规则参数</button>
+        </nav>
+
+        <div class="top-actions">
+          <button type="button" class="primary" id="saveRecordBtn">保存测算</button>
+          <button type="button" id="exportRulesBtn">导出规则</button>
+          <label class="import-label">
+            导入规则
+            <input type="file" id="importRulesInput" accept="application/json,.json">
+          </label>
+          <button type="button" id="exportRecordsBtn">导出记录</button>
+        </div>
+      </header>
+
+      <!-- ========== 主体 ========== -->
+      <main class="main">
+
+        <!-- Tab 1: 成本测算 -->
+        <section class="view" data-view="cost">
+          <div class="workspace">
+            <aside class="panel">
+              <div class="panel-head">
+                <h2>产品选择</h2>
+              </div>
+              <div class="product-list" id="productPalette"></div>
+            </aside>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>成本组件</h2>
+              </div>
+              <div class="panel-body">
+                <div class="drop-zone" id="dropZone"></div>
+                <div class="cost-editor" id="costEditor"></div>
+              </div>
+            </section>
+
+            <aside class="panel results-panel">
+              <div class="panel-head">
+                <h2>结果</h2>
+              </div>
+              <div class="panel-body">
+                <div class="cost-summary-strip" id="costSummaryStrip"></div>
+                <div class="cost-results-panel" id="costResultsPanel"></div>
+                <section class="result-block">
+                  <h3>成本拆解</h3>
+                  <div id="costBreakdown"></div>
+                </section>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Tab 2: 场景评级 -->
+        <section class="view" data-view="scenario" hidden>
+          <div class="workspace">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>景区参数</h2>
+              </div>
+              <div class="panel-body">
+                <div class="form-grid" id="scenarioControls"></div>
+              </div>
+            </section>
+
+            <aside class="panel results-panel">
+              <div class="panel-head">
+                <h2>评级结果</h2>
+              </div>
+              <div class="panel-body">
+                <div class="scenario-summary-strip" id="scenarioSummaryStrip"></div>
+                <div id="scenarioResultsPanel"></div>
+                <section class="result-block">
+                  <h3>评分拆解</h3>
+                  <div id="scoreBreakdown"></div>
+                </section>
+                <section class="result-block">
+                  <h3>风险提示</h3>
+                  <div id="riskPanel"></div>
+                </section>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Tab 3: 定价测算 -->
+        <section class="view" data-view="pricing" hidden>
+          <div class="workspace">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>渠道参数</h2>
+              </div>
+              <div class="panel-body">
+                <div class="form-grid" id="channelControls"></div>
+              </div>
+            </section>
+
+            <aside class="panel results-panel">
+              <div class="panel-head">
+                <h2>定价结果</h2>
+              </div>
+              <div class="panel-body">
+                <div class="pricing-summary-strip" id="pricingSummaryStrip"></div>
+                <section class="result-block">
+                  <h3>成本摘要</h3>
+                  <div id="pricingCostSummary"></div>
+                </section>
+                <section class="result-block">
+                  <h3>场景摘要</h3>
+                  <div id="pricingScenarioSummary"></div>
+                </section>
+                <div id="pricingResultsPanel"></div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Tab 4: 测算记录 -->
+        <section class="view" data-view="records" hidden>
+          <div class="panel">
+            <div class="panel-head">
+              <h2>测算记录</h2>
+            </div>
+            <div class="panel-body records-list" id="recordsList"></div>
+          </div>
+        </section>
+
+        <!-- Tab 5: 产品库 -->
+        <section class="view" data-view="products" hidden>
+          <div class="panel">
+            <div class="panel-head">
+              <h2>产品库</h2>
+              <div class="panel-head-actions">
+                <button type="button" id="addProductBtn">添加产品</button>
+                <button type="button" id="resetProductsBtn">重置</button>
+                <button type="button" id="exportProductsBtn">导出</button>
+                <label class="import-label">
+                  导入
+                  <input type="file" id="importProductsInput" accept="application/json,.json">
+                </label>
+              </div>
+            </div>
+            <div class="panel-body library-list" id="productLibrary"></div>
+          </div>
+        </section>
+
+        <!-- Tab 6: 规则参数 -->
+        <section class="view" data-view="settings" hidden>
+          <div class="panel">
+            <div class="panel-head">
+              <h2>规则参数</h2>
+              <div class="panel-head-actions">
+                <button type="button" id="resetRulesBtn">重置默认</button>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="rule-board" id="ruleBoard"></div>
+              <div id="settingsBody"></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- ========== 移动端底部Tab栏 ========== -->
+      <nav class="mobile-tab-bar" aria-label="移动端导航">
+        <button type="button" class="mobile-tab active" data-view-target="cost">
+          <span class="mobile-tab-icon">💰</span>
+          <span class="mobile-tab-label">成本</span>
+        </button>
+        <button type="button" class="mobile-tab" data-view-target="scenario">
+          <span class="mobile-tab-icon">⭐</span>
+          <span class="mobile-tab-label">场景</span>
+        </button>
+        <button type="button" class="mobile-tab" data-view-target="pricing">
+          <span class="mobile-tab-icon">📊</span>
+          <span class="mobile-tab-label">定价</span>
+        </button>
+        <button type="button" class="mobile-tab" data-view-target="records">
+          <span class="mobile-tab-icon">📋</span>
+          <span class="mobile-tab-label">记录</span>
+        </button>
+        <button type="button" class="mobile-tab" data-view-target="products">
+          <span class="mobile-tab-icon">📦</span>
+          <span class="mobile-tab-label">产品</span>
+        </button>
+        <button type="button" class="mobile-tab" data-view-target="settings">
+          <span class="mobile-tab-icon">⚙️</span>
+          <span class="mobile-tab-label">规则</span>
+        </button>
+      </nav>
+
+    </div>
+
+    <script src="./assets/default-data.js"></script>
+    <script src="./assets/calculator-core.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>

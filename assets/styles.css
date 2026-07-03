@@ -1,0 +1,1054 @@
+/* ═══════════════════════════════════════════
+   寻迹万物 · 销售测算工具
+   Pico CSS v2 覆盖 + 移动端优先响应式 + 6Tab 布局
+   ═══════════════════════════════════════════ */
+
+/* ── CSS 变量 ── */
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --surface-2: #f0eee8;
+  --ink: #1f2933;
+  --muted: #667085;
+  --line: #d8d3c7;
+  --green: #247857;
+  --green-soft: #e5f4ed;
+  --blue: #315f8c;
+  --blue-soft: #e8f0f8;
+  --amber: #ad6b1f;
+  --amber-soft: #fff0d9;
+  --red: #a33f32;
+  --red-soft: #fbe6e1;
+  --gold: #c88b16;
+  --gold-soft: #fef7e0;
+  --shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
+}
+
+/* ── 全局重置 ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 7px;
+  min-height: 34px;
+  padding: 6px 11px;
+  white-space: nowrap;
+}
+
+button:hover {
+  border-color: #a7b0ba;
+}
+
+button.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  min-height: 34px;
+  padding: 6px 9px;
+  font-size: 13px;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  min-height: 18px;
+  accent-color: var(--green);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background: var(--surface-2);
+  color: #384250;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ── 应用外壳 ── */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 顶栏 ── */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #fffaf0;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: #1f2933;
+  color: #f7d28a;
+  font-weight: 800;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ── 桌面 Tab 导航 ── */
+.view-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.view-tabs button {
+  min-height: 34px;
+  padding: 7px 11px;
+  border-radius: 7px;
+}
+
+.view-tabs button.active {
+  background: #1f2933;
+  color: #fff;
+  border-color: #1f2933;
+}
+
+.top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-actions button {
+  min-height: 34px;
+  padding: 7px 11px;
+  border-radius: 7px;
+}
+
+.top-actions button.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.import-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.import-label input {
+  display: none;
+}
+
+/* ── 移动端 Tab 栏 ── */
+.mobile-tab-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fffaf0;
+  border-top: 1px solid var(--line);
+  z-index: 100;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  padding: 4px 6px;
+  padding-bottom: max(4px, env(safe-area-inset-bottom));
+}
+
+.mobile-tab-bar button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 52px;
+  padding: 4px 2px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 10px;
+  border-radius: 8px;
+  line-height: 1.2;
+}
+
+.mobile-tab-bar button .tab-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.mobile-tab-bar button.active {
+  background: #1f2933;
+  color: #fff;
+}
+
+/* ── 主内容区 ── */
+.main {
+  flex: 1;
+  padding: 16px;
+  padding-bottom: 80px;
+}
+
+.view[hidden] {
+  display: none;
+}
+
+/* ── 摘要条 ── */
+.summary-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* ── 指标卡片 ── */
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 0;
+  box-shadow: var(--shadow);
+}
+
+.metric-card span,
+.metric-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 21px;
+  margin: 3px 0;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.metric-card.grade-S,
+.metric-card.ok,
+.metric-card.profit {
+  border-left-color: var(--gold);
+}
+
+.metric-card.grade-A {
+  border-left-color: var(--green);
+}
+
+.metric-card.grade-B,
+.metric-card.accent {
+  border-left-color: var(--blue);
+}
+
+.metric-card.grade-C,
+.metric-card.warn {
+  border-left-color: var(--red);
+}
+
+/* ── 等级大字报 ── */
+.grade-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 4px 10px;
+  font-size: 24px;
+  font-weight: 900;
+  border-radius: 8px;
+  line-height: 1;
+}
+
+.grade-badge.grade-S {
+  background: linear-gradient(135deg, #f7d28a, #c88b16);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(200, 139, 22, 0.35);
+}
+
+.grade-badge.grade-A {
+  background: linear-gradient(135deg, #5cb885, #247857);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(36, 120, 87, 0.35);
+}
+
+.grade-badge.grade-B {
+  background: linear-gradient(135deg, #5b8cb8, #315f8c);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(49, 95, 140, 0.35);
+}
+
+.grade-badge.grade-C {
+  background: linear-gradient(135deg, #9ca3af, #667085);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(102, 112, 133, 0.35);
+}
+
+/* ── 工作区网格 ── */
+.workspace {
+  display: grid;
+  grid-template-columns: 240px 1.35fr 0.9fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.workspace-scenario {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.workspace-pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+/* ── 面板 ── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.panel-body {
+  padding: 14px;
+}
+
+/* ── 产品列表 ── */
+.product-list {
+  display: grid;
+  gap: 6px;
+  max-height: calc(100vh - 230px);
+  overflow: auto;
+  padding: 10px;
+}
+
+.product-card {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  border-color: #a7b0ba;
+}
+
+.product-card.active {
+  border-color: var(--green);
+  background: var(--green-soft);
+}
+
+.product-card strong {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.product-card span,
+.product-card b {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.product-card b {
+  color: var(--ink);
+}
+
+/* ── 产品 ID 标签 ── */
+.product-id {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-width: 40px;
+  border-radius: 6px;
+  padding: 2px 6px;
+  background: #1f2933;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ── 拖放区 ── */
+.drop-zone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 1px dashed #a7b0ba;
+  background: #fbfaf6;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 12px;
+}
+
+.drop-product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.drop-product strong,
+.drop-product small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.drop-product small {
+  color: var(--muted);
+}
+
+/* ── 图标按钮 ── */
+.icon-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  padding: 0;
+  font-size: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── 成本编辑器 ── */
+.cost-editor {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 12px 12px;
+}
+
+.cost-row {
+  display: grid;
+  gap: 4px;
+}
+
+.cost-row span,
+.field span {
+  color: #384250;
+  font-size: 12px;
+}
+
+/* ── 表单字段 ── */
+.field {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.field small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+}
+
+/* ── 计算区域 ── */
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.calc-section {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: 0;
+}
+
+.calc-section.full {
+  grid-column: 1 / -1;
+}
+
+.calc-section h3 {
+  margin: 0;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  font-size: 14px;
+}
+
+/* ── 结果区 ── */
+.result-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.result-block {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.result-block h3 {
+  margin: 0;
+  padding: 9px 11px;
+  background: var(--surface-2);
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.result-block h3::after {
+  content: "▼";
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--muted);
+  transition: transform 0.2s;
+}
+
+.result-block.collapsed h3::after {
+  content: "▶";
+}
+
+.result-block.collapsed .result-body {
+  display: none;
+}
+
+.result-block dl {
+  display: grid;
+  grid-template-columns: minmax(90px, 0.8fr) minmax(0, 1.2fr);
+  margin: 0;
+}
+
+.result-block dt,
+.result-block dd {
+  margin: 0;
+  padding: 8px 10px;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+}
+
+.result-block dt {
+  color: var(--muted);
+}
+
+.result-block dd {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* ── 评分拆解 ── */
+.score-breakdown {
+  display: grid;
+  gap: 6px;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) 40px;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.score-row span {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.score-track {
+  height: 8px;
+  background: #e5e0d4;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.score-track i {
+  display: block;
+  height: 100%;
+  background: var(--green);
+  border-radius: 999px;
+}
+
+/* ── 规则面板 ── */
+.rule-board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.rule-card {
+  display: grid;
+  gap: 3px;
+  text-align: left;
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  min-height: 80px;
+  cursor: pointer;
+}
+
+.rule-card:hover {
+  border-color: #a7b0ba;
+}
+
+.rule-card span {
+  color: var(--amber);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rule-card strong {
+  font-size: 15px;
+}
+
+.rule-card small {
+  color: var(--muted);
+}
+
+/* ── 设置区 ── */
+.settings-section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  overflow: auto;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.section-title button {
+  min-height: 32px;
+  border-radius: 7px;
+  padding: 6px 10px;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.settings-actions button {
+  min-height: 34px;
+  border-radius: 7px;
+  padding: 7px 11px;
+}
+
+/* ── 配置表 ── */
+.config-table {
+  margin-top: 10px;
+  min-width: 680px;
+}
+
+.config-table.wide {
+  min-width: 940px;
+}
+
+.config-table input {
+  min-height: 30px;
+  padding: 4px 7px;
+}
+
+/* ── 评分配置 ── */
+.score-config {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.score-config-block {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.score-config-block h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.score-config-block label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.score-config-block span {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* ── 产品编辑区 ── */
+.product-editor {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfaf6;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.product-editor.collapsed {
+  color: var(--muted);
+  background: var(--surface-2);
+}
+
+.product-editor h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.product-editor.collapsed strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+}
+
+.product-form-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.product-component-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* ── 库列表 / 记录列表 ── */
+.library-list,
+.records-list {
+  display: grid;
+  gap: 8px;
+}
+
+.library-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.library-toolbar button,
+.library-toolbar .import-label {
+  min-height: 34px;
+  border-radius: 7px;
+  padding: 7px 11px;
+}
+
+.library-table-head {
+  display: grid;
+  grid-template-columns: 64px minmax(160px, 1.4fr) repeat(4, minmax(90px, 1fr)) auto;
+  gap: 8px;
+  padding: 0 10px 6px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.library-items {
+  display: grid;
+  gap: 8px;
+}
+
+.library-row {
+  display: grid;
+  grid-template-columns: 64px minmax(160px, 1.4fr) repeat(4, minmax(90px, 1fr)) auto;
+  gap: 8px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 0;
+}
+
+.record-row {
+  display: grid;
+  grid-template-columns: 150px minmax(150px, 1fr) minmax(160px, 1fr) 110px minmax(180px, 1.2fr) auto;
+  gap: 8px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 0;
+}
+
+.library-row strong,
+.record-row strong,
+.library-row span,
+.record-row span,
+.library-row b,
+.record-row b {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.library-row button,
+.record-row button {
+  min-height: 32px;
+  border-radius: 7px;
+  padding: 6px 10px;
+}
+
+.row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.row-actions button {
+  width: auto;
+  white-space: nowrap;
+}
+
+/* ── 空状态 ── */
+.empty {
+  margin: 0;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════
+   响应式
+   ═══════════════════════════════════════════ */
+
+/* ── ≤1200px ── */
+@media (max-width: 1200px) {
+  .topbar {
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .workspace {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+
+  .workspace .panel:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .workspace-scenario,
+  .workspace-pricing {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-strip,
+  .rule-board,
+  .product-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-component-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-tab-bar {
+    display: none;
+  }
+}
+
+/* ── ≤768px ── */
+@media (max-width: 768px) {
+  .main {
+    padding: 8px;
+    padding-bottom: 80px;
+  }
+
+  .view-tabs {
+    display: none;
+  }
+
+  .mobile-tab-bar {
+    display: grid;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .workspace,
+  .workspace-scenario,
+  .workspace-pricing,
+  .calc-grid,
+  .form-grid,
+  .settings-grid,
+  .score-config,
+  .summary-strip,
+  .rule-board,
+  .product-form-grid,
+  .product-component-grid,
+  .library-table-head {
+    grid-template-columns: 1fr;
+  }
+
+  .workspace .panel:last-child {
+    grid-column: auto;
+  }
+
+  .product-list {
+    max-height: 280px;
+  }
+
+  .cost-editor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .library-row,
+  .record-row {
+    grid-template-columns: 1fr;
+  }
+
+  .row-actions {
+    justify-content: flex-start;
+  }
+
+  .metric-card strong {
+    font-size: 18px;
+  }
+
+  .settings-section {
+    padding: 10px;
+  }
+}
