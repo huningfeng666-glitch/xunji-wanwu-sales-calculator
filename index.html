@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>寻迹万物销售测算台</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/styles.css?v=20260706-ui-backup">
   </head>
   <body>
     <div class="app-shell">
@@ -21,39 +21,88 @@
         </div>
 
         <nav class="view-tabs" aria-label="主视图">
-          <button type="button" class="active" data-view-target="cost">成本测算</button>
-          <button type="button" data-view-target="scenario">场景评级</button>
+          <button type="button" class="active" data-view-target="scenario">场景评级</button>
+          <button type="button" data-view-target="scenic-db">景区库</button>
+          <button type="button" data-view-target="cost">成本测算</button>
           <button type="button" data-view-target="pricing">定价测算</button>
           <button type="button" data-view-target="records">测算记录</button>
           <button type="button" data-view-target="products">产品库</button>
           <button type="button" data-view-target="settings">规则参数</button>
         </nav>
 
-        <div class="top-actions">
-          <button type="button" class="primary" id="saveRecordBtn">保存测算</button>
-          <button type="button" id="exportRulesBtn">导出规则</button>
-          <label class="import-label">
-            导入规则
-            <input type="file" id="importRulesInput" accept="application/json,.json">
-          </label>
-          <button type="button" id="exportRecordsBtn">导出记录</button>
-        </div>
       </header>
+
+      <aside class="ui-editor-drawer" id="uiEditorDrawer" hidden></aside>
 
       <!-- ========== 主体 ========== -->
       <main class="main">
 
-        <!-- Tab 1: 成本测算 -->
-        <section class="view" data-view="cost">
+        <!-- Tab 1: 场景评级 -->
+        <section class="view" data-view="scenario">
+          <div class="scenario-sticky-zone">
+            <div class="scenario-live-summary" id="scenarioStickySummary"></div>
+            <nav class="secondary-tabs scenario-subtabs" aria-label="场景评级子类目">
+              <button type="button" class="active" data-scenario-panel="save">景区信息</button>
+            </nav>
+            <div class="context-toolbar-host" data-context-host="scenario"></div>
+          </div>
+
+          <div class="scenario-panel-view" data-scenario-panel-view="save">
+            <div class="workspace workspace-scenario">
+              <section class="panel" data-ui-panel-title="panelScenarioParams">
+                <div class="panel-head">
+                  <h2>景区参数</h2>
+                </div>
+                <div class="panel-body">
+                  <div class="form-grid" id="scenarioControls"></div>
+                </div>
+              </section>
+
+              <aside class="panel results-panel" data-ui-panel-title="panelScenarioResults">
+                <div class="panel-head">
+                  <h2>评级结果</h2>
+                </div>
+                <div class="panel-body">
+                  <div class="scenario-summary-strip" id="scenarioSummaryStrip"></div>
+                  <div id="scenarioResultsPanel"></div>
+                  <section class="result-block">
+                    <h3>评分拆解</h3>
+                    <div id="scoreBreakdown"></div>
+                  </section>
+                  <section class="result-block">
+                    <h3>风险提示</h3>
+                    <div id="riskPanel"></div>
+                  </section>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Tab 2: 景区库 -->
+        <section class="view" data-view="scenic-db" hidden>
+          <div class="context-toolbar-host" data-context-host="scenic-db"></div>
+          <div class="panel" data-ui-panel-title="panelScenicDb">
+            <div class="panel-head">
+              <h2>景区基础库</h2>
+            </div>
+            <div class="panel-body" id="scenicDatabaseBody"></div>
+          </div>
+        </section>
+
+        <!-- Tab 3: 成本测算 -->
+        <section class="view" data-view="cost" hidden>
+          <div class="context-toolbar-host" data-context-host="cost"></div>
           <div class="workspace">
-            <aside class="panel">
+            <aside class="panel" data-ui-panel-scope="cost" data-ui-panel-key="product" data-ui-panel-title="panelProductChoice">
               <div class="panel-head">
                 <h2>产品选择</h2>
               </div>
               <div class="product-list" id="productPalette"></div>
             </aside>
 
-            <section class="panel">
+            <section class="panel" data-ui-panel-scope="cost" data-ui-panel-key="cost" data-ui-panel-title="panelCostComponents">
               <div class="panel-head">
                 <h2>成本组件</h2>
               </div>
@@ -63,7 +112,7 @@
               </div>
             </section>
 
-            <aside class="panel results-panel">
+            <aside class="panel results-panel" data-ui-panel-scope="cost" data-ui-panel-key="result" data-ui-panel-title="panelCostResults">
               <div class="panel-head">
                 <h2>结果</h2>
               </div>
@@ -79,42 +128,11 @@
           </div>
         </section>
 
-        <!-- Tab 2: 场景评级 -->
-        <section class="view" data-view="scenario" hidden>
-          <div class="workspace">
-            <section class="panel">
-              <div class="panel-head">
-                <h2>景区参数</h2>
-              </div>
-              <div class="panel-body">
-                <div class="form-grid" id="scenarioControls"></div>
-              </div>
-            </section>
-
-            <aside class="panel results-panel">
-              <div class="panel-head">
-                <h2>评级结果</h2>
-              </div>
-              <div class="panel-body">
-                <div class="scenario-summary-strip" id="scenarioSummaryStrip"></div>
-                <div id="scenarioResultsPanel"></div>
-                <section class="result-block">
-                  <h3>评分拆解</h3>
-                  <div id="scoreBreakdown"></div>
-                </section>
-                <section class="result-block">
-                  <h3>风险提示</h3>
-                  <div id="riskPanel"></div>
-                </section>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <!-- Tab 3: 定价测算 -->
-        <section class="view" data-view="pricing" hidden>
-          <div class="workspace">
-            <section class="panel">
+        <!-- Tab 4: 定价测算 -->
+        <section class="view" data-view="pricing" id="view-pricing" hidden>
+          <div class="context-toolbar-host" data-context-host="pricing"></div>
+          <div class="workspace workspace-pricing">
+            <section class="panel" data-ui-panel-scope="pricing" data-ui-panel-key="channel" data-ui-panel-title="panelPricingChannel">
               <div class="panel-head">
                 <h2>渠道参数</h2>
               </div>
@@ -123,7 +141,7 @@
               </div>
             </section>
 
-            <aside class="panel results-panel">
+            <aside class="panel results-panel" data-ui-panel-scope="pricing" data-ui-panel-key="result" data-ui-panel-title="panelPricingResults">
               <div class="panel-head">
                 <h2>定价结果</h2>
               </div>
@@ -143,9 +161,10 @@
           </div>
         </section>
 
-        <!-- Tab 4: 测算记录 -->
+        <!-- Tab 5: 测算记录 -->
         <section class="view" data-view="records" hidden>
-          <div class="panel">
+          <div class="context-toolbar-host" data-context-host="records"></div>
+          <div class="panel" data-ui-panel-title="panelRecords">
             <div class="panel-head">
               <h2>测算记录</h2>
             </div>
@@ -153,9 +172,10 @@
           </div>
         </section>
 
-        <!-- Tab 5: 产品库 -->
+        <!-- Tab 6: 产品库 -->
         <section class="view" data-view="products" hidden>
-          <div class="panel">
+          <div class="context-toolbar-host" data-context-host="products"></div>
+          <div class="panel" data-ui-panel-title="panelProducts">
             <div class="panel-head">
               <h2>产品库</h2>
               <div class="panel-head-actions">
@@ -172,14 +192,12 @@
           </div>
         </section>
 
-        <!-- Tab 6: 规则参数 -->
+        <!-- Tab 7: 规则参数 -->
         <section class="view" data-view="settings" hidden>
-          <div class="panel">
+          <div class="context-toolbar-host" data-context-host="settings"></div>
+          <div class="panel" data-ui-panel-title="panelSettings">
             <div class="panel-head">
               <h2>规则参数</h2>
-              <div class="panel-head-actions">
-                <button type="button" id="resetRulesBtn">重置默认</button>
-              </div>
             </div>
             <div class="panel-body">
               <div class="rule-board" id="ruleBoard"></div>
@@ -192,13 +210,17 @@
 
       <!-- ========== 移动端底部Tab栏 ========== -->
       <nav class="mobile-tab-bar" aria-label="移动端导航">
-        <button type="button" class="mobile-tab active" data-view-target="cost">
-          <span class="mobile-tab-icon">💰</span>
-          <span class="mobile-tab-label">成本</span>
-        </button>
-        <button type="button" class="mobile-tab" data-view-target="scenario">
+        <button type="button" class="mobile-tab active" data-view-target="scenario">
           <span class="mobile-tab-icon">⭐</span>
           <span class="mobile-tab-label">场景</span>
+        </button>
+        <button type="button" class="mobile-tab" data-view-target="scenic-db">
+          <span class="mobile-tab-icon">库</span>
+          <span class="mobile-tab-label">景区</span>
+        </button>
+        <button type="button" class="mobile-tab" data-view-target="cost">
+          <span class="mobile-tab-icon">💰</span>
+          <span class="mobile-tab-label">成本</span>
         </button>
         <button type="button" class="mobile-tab" data-view-target="pricing">
           <span class="mobile-tab-icon">📊</span>
@@ -220,8 +242,10 @@
 
     </div>
 
-    <script src="./assets/default-data.js"></script>
-    <script src="./assets/calculator-core.js"></script>
-    <script src="./assets/app.js"></script>
+    <script src="./assets/default-data.js?v=20260706-ui-backup"></script>
+    <script src="./assets/calculator-core.js?v=20260706-ui-backup"></script>
+    <script src="./assets/sku-data.js?v=20260706-ui-backup"></script>
+    <script src="./assets/scenic-verification-data.js?v=20260706-ui-backup"></script>
+    <script src="./assets/app.js?v=20260706-ui-backup"></script>
   </body>
 </html>
