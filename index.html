@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>寻迹万物销售测算台</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <link rel="stylesheet" href="./assets/styles.css?v=20260706-ui-backup">
+    <link rel="stylesheet" href="./assets/styles.css?v=20260707-dashboard-funnel-gaps-v2">
   </head>
   <body>
     <div class="app-shell">
@@ -16,19 +16,97 @@
           <div class="brand-mark">瓦</div>
           <div>
             <h1>寻迹万物销售测算台</h1>
-            <p>成本 · 场景评级 · 定价 · 采购/寄售 · 提成</p>
+            <p>销售经营 · 点位评级 · 商品价格 · 履约动销 · 系统管理 · 账号管理</p>
           </div>
         </div>
 
         <nav class="view-tabs" aria-label="主视图">
-          <button type="button" class="active" data-view-target="scenario">场景评级</button>
-          <button type="button" data-view-target="scenic-db">景区库</button>
-          <button type="button" data-view-target="cost">成本测算</button>
-          <button type="button" data-view-target="pricing">定价测算</button>
-          <button type="button" data-view-target="records">测算记录</button>
-          <button type="button" data-view-target="products">产品库</button>
-          <button type="button" data-view-target="settings">规则参数</button>
+          <div class="nav-group" data-nav-group data-nav-views="crm records">
+            <button type="button" class="nav-group-trigger" data-nav-primary="crm" aria-haspopup="true" aria-expanded="false">销售经营</button>
+            <div class="nav-submenu" role="menu" aria-label="销售经营二级导航">
+              <button type="button" data-view-target="crm" data-crm-panel-target="dashboard" role="menuitem">管理驾驶舱</button>
+              <button type="button" data-view-target="crm" data-crm-panel-target="customers" role="menuitem">客户客资</button>
+              <button type="button" data-view-target="records" role="menuitem">点位机会</button>
+              <button type="button" data-view-target="crm" data-crm-panel-target="contracts" role="menuitem">合同管理</button>
+              <button type="button" data-view-target="crm" data-crm-panel-target="orders" role="menuitem">订单/MES</button>
+              <button type="button" data-view-target="crm" data-crm-panel-target="storeSales" role="menuitem">门店销售</button>
+            </div>
+          </div>
+          <div class="nav-group active" data-nav-group data-nav-views="scenario scenic-db">
+            <button type="button" class="nav-group-trigger active" data-nav-primary="scenario" aria-haspopup="true" aria-expanded="false">点位评级</button>
+            <div class="nav-submenu" role="menu" aria-label="点位评级二级导航">
+              <button type="button" class="active" data-view-target="scenario" role="menuitem">场景评级</button>
+              <button type="button" data-view-target="scenic-db" role="menuitem">景区库</button>
+            </div>
+          </div>
+          <div class="nav-group" data-nav-group data-nav-views="fulfillment">
+            <button type="button" class="nav-group-trigger" data-nav-primary="fulfillment" aria-haspopup="true" aria-expanded="false">履约动销</button>
+            <div class="nav-submenu" role="menu" aria-label="履约动销二级导航">
+              <button type="button" data-view-target="fulfillment" role="menuitem">点位落地</button>
+            </div>
+          </div>
+          <div class="nav-group" data-nav-group data-nav-views="products pricing cost">
+            <button type="button" class="nav-group-trigger" data-nav-primary="products" aria-haspopup="true" aria-expanded="false">商品价格</button>
+            <div class="nav-submenu" role="menu" aria-label="商品价格二级导航">
+              <button type="button" data-view-target="products" role="menuitem">产品库</button>
+              <button type="button" data-view-target="pricing" role="menuitem">定价测算</button>
+              <button type="button" data-view-target="cost" role="menuitem">成本库</button>
+            </div>
+          </div>
+          <div class="nav-group" data-nav-group data-nav-views="settings">
+            <button type="button" class="nav-group-trigger" data-nav-primary="settings" aria-haspopup="true" aria-expanded="false">系统管理</button>
+            <div class="nav-submenu" role="menu" aria-label="系统管理二级导航">
+              <button type="button" data-view-target="settings" role="menuitem">规则参数</button>
+            </div>
+          </div>
+          <div class="nav-group" data-nav-group data-nav-views="accounts">
+            <button type="button" class="nav-group-trigger" data-nav-primary="accounts" aria-haspopup="true" aria-expanded="false">账号管理</button>
+            <div class="nav-submenu" role="menu" aria-label="账号管理二级导航">
+              <button type="button" data-view-target="accounts" data-nav-label="账号权限" role="menuitem">账号权限</button>
+            </div>
+          </div>
+          <div class="nav-group nav-layout-group" data-nav-group data-layout-nav>
+            <button type="button" class="nav-group-trigger" data-layout-open aria-haspopup="true">页面布局</button>
+            <div class="nav-submenu nav-layout-menu" role="menu" aria-label="页面布局设计">
+              <div class="nav-layout-section" role="group" aria-label="销售经营布局">
+                <span>销售经营</span>
+                <button type="button" data-layout-design-view="crm" data-layout-design-crm-panel="dashboard" role="menuitem">管理驾驶舱</button>
+                <button type="button" data-layout-design-view="crm" data-layout-design-crm-panel="customers" role="menuitem">客户客资</button>
+                <button type="button" data-layout-design-view="records" role="menuitem">点位机会</button>
+                <button type="button" data-layout-design-view="crm" data-layout-design-crm-panel="contracts" role="menuitem">合同管理</button>
+                <button type="button" data-layout-design-view="crm" data-layout-design-crm-panel="orders" role="menuitem">订单/MES</button>
+                <button type="button" data-layout-design-view="crm" data-layout-design-crm-panel="storeSales" role="menuitem">门店销售</button>
+              </div>
+              <div class="nav-layout-section" role="group" aria-label="点位评级布局">
+                <span>点位评级</span>
+                <button type="button" data-layout-design-view="scenario" data-layout-design-scenario-panel="save" role="menuitem">场景评级</button>
+                <button type="button" data-layout-design-view="scenic-db" role="menuitem">景区库</button>
+              </div>
+              <div class="nav-layout-section" role="group" aria-label="履约动销布局">
+                <span>履约动销</span>
+                <button type="button" data-layout-design-view="fulfillment" role="menuitem">点位落地</button>
+              </div>
+              <div class="nav-layout-section" role="group" aria-label="商品价格布局">
+                <span>商品价格</span>
+                <button type="button" data-layout-design-view="products" data-layout-design-product-panel="category" role="menuitem">产品类别</button>
+                <button type="button" data-layout-design-view="products" data-layout-design-product-panel="sku" role="menuitem">SKU总表</button>
+                <button type="button" data-layout-design-view="products" data-layout-design-product-panel="measured" role="menuitem">测算产品</button>
+                <button type="button" data-layout-design-view="pricing" role="menuitem">定价测算</button>
+                <button type="button" data-layout-design-view="cost" role="menuitem">成本库</button>
+              </div>
+              <div class="nav-layout-section" role="group" aria-label="系统管理布局">
+                <span>系统管理</span>
+                <button type="button" data-layout-design-view="settings" role="menuitem">规则参数</button>
+              </div>
+              <div class="nav-layout-section" role="group" aria-label="账号管理布局">
+                <span>账号管理</span>
+                <button type="button" data-layout-design-view="accounts" role="menuitem">账号权限</button>
+              </div>
+            </div>
+          </div>
         </nav>
+
+        <div class="account-bar" id="accountBar" aria-label="账号与权限"></div>
 
       </header>
 
@@ -36,6 +114,16 @@
 
       <!-- ========== 主体 ========== -->
       <main class="main">
+        <!-- Tab 0: 销售CRM -->
+        <section class="view" data-view="crm" hidden>
+          <div class="context-toolbar-host" data-context-host="crm"></div>
+          <div class="panel" data-ui-panel-title="panelCrm">
+            <div class="panel-head">
+              <h2>销售CRM全链路</h2>
+            </div>
+            <div class="panel-body" id="crmWorkspaceBody"></div>
+          </div>
+        </section>
 
         <!-- Tab 1: 场景评级 -->
         <section class="view" data-view="scenario">
@@ -161,18 +249,29 @@
           </div>
         </section>
 
-        <!-- Tab 5: 测算记录 -->
+        <!-- Tab 5: 点位机会 -->
         <section class="view" data-view="records" hidden>
           <div class="context-toolbar-host" data-context-host="records"></div>
           <div class="panel" data-ui-panel-title="panelRecords">
             <div class="panel-head">
-              <h2>测算记录</h2>
+              <h2>点位机会</h2>
             </div>
             <div class="panel-body records-list" id="recordsList"></div>
           </div>
         </section>
 
-        <!-- Tab 6: 产品库 -->
+        <!-- Tab 6: 点位落地 -->
+        <section class="view" data-view="fulfillment" hidden>
+          <div class="context-toolbar-host" data-context-host="fulfillment"></div>
+          <div class="panel" data-ui-panel-title="panelFulfillment">
+            <div class="panel-head">
+              <h2>点位落地</h2>
+            </div>
+            <div class="panel-body" id="fulfillmentBody"></div>
+          </div>
+        </section>
+
+        <!-- Tab 7: 产品库 -->
         <section class="view" data-view="products" hidden>
           <div class="context-toolbar-host" data-context-host="products"></div>
           <div class="panel" data-ui-panel-title="panelProducts">
@@ -192,7 +291,7 @@
           </div>
         </section>
 
-        <!-- Tab 7: 规则参数 -->
+        <!-- Tab 8: 规则参数 -->
         <section class="view" data-view="settings" hidden>
           <div class="context-toolbar-host" data-context-host="settings"></div>
           <div class="panel" data-ui-panel-title="panelSettings">
@@ -206,46 +305,54 @@
           </div>
         </section>
 
+        <!-- Tab 9: 账号管理 -->
+        <section class="view" data-view="accounts" hidden>
+          <div class="context-toolbar-host" data-context-host="accounts"></div>
+          <div class="panel" data-ui-panel-title="panelAccounts">
+            <div class="panel-head">
+              <h2>账号管理</h2>
+            </div>
+            <div class="panel-body" id="accountAdminBody"></div>
+          </div>
+        </section>
+
       </main>
 
       <!-- ========== 移动端底部Tab栏 ========== -->
       <nav class="mobile-tab-bar" aria-label="移动端导航">
-        <button type="button" class="mobile-tab active" data-view-target="scenario">
-          <span class="mobile-tab-icon">⭐</span>
-          <span class="mobile-tab-label">场景</span>
+        <button type="button" class="mobile-tab" data-view-target="crm" data-nav-views="crm records" data-nav-label="经营">
+          <span class="mobile-tab-icon">客</span>
+          <span class="mobile-tab-label">经营</span>
         </button>
-        <button type="button" class="mobile-tab" data-view-target="scenic-db">
-          <span class="mobile-tab-icon">库</span>
-          <span class="mobile-tab-label">景区</span>
+        <button type="button" class="mobile-tab active" data-view-target="scenario" data-nav-views="scenario scenic-db" data-nav-label="评级">
+          <span class="mobile-tab-icon">景</span>
+          <span class="mobile-tab-label">评级</span>
         </button>
-        <button type="button" class="mobile-tab" data-view-target="cost">
-          <span class="mobile-tab-icon">💰</span>
-          <span class="mobile-tab-label">成本</span>
+        <button type="button" class="mobile-tab" data-view-target="fulfillment" data-nav-views="fulfillment" data-nav-label="落地">
+          <span class="mobile-tab-icon">落</span>
+          <span class="mobile-tab-label">落地</span>
         </button>
-        <button type="button" class="mobile-tab" data-view-target="pricing">
-          <span class="mobile-tab-icon">📊</span>
-          <span class="mobile-tab-label">定价</span>
+        <button type="button" class="mobile-tab" data-view-target="products" data-nav-views="products pricing cost" data-nav-label="商品">
+          <span class="mobile-tab-icon">品</span>
+          <span class="mobile-tab-label">商品</span>
         </button>
-        <button type="button" class="mobile-tab" data-view-target="records">
-          <span class="mobile-tab-icon">📋</span>
-          <span class="mobile-tab-label">记录</span>
+        <button type="button" class="mobile-tab" data-view-target="settings" data-nav-views="settings" data-nav-label="管理">
+          <span class="mobile-tab-icon">管</span>
+          <span class="mobile-tab-label">管理</span>
         </button>
-        <button type="button" class="mobile-tab" data-view-target="products">
-          <span class="mobile-tab-icon">📦</span>
-          <span class="mobile-tab-label">产品</span>
-        </button>
-        <button type="button" class="mobile-tab" data-view-target="settings">
-          <span class="mobile-tab-icon">⚙️</span>
-          <span class="mobile-tab-label">规则</span>
+        <button type="button" class="mobile-tab" data-view-target="accounts" data-nav-views="accounts" data-nav-label="账号">
+          <span class="mobile-tab-icon">权</span>
+          <span class="mobile-tab-label">账号</span>
         </button>
       </nav>
 
     </div>
 
-    <script src="./assets/default-data.js?v=20260706-ui-backup"></script>
-    <script src="./assets/calculator-core.js?v=20260706-ui-backup"></script>
-    <script src="./assets/sku-data.js?v=20260706-ui-backup"></script>
-    <script src="./assets/scenic-verification-data.js?v=20260706-ui-backup"></script>
-    <script src="./assets/app.js?v=20260706-ui-backup"></script>
+    <script src="./assets/default-data.js?v=20260707-crm-rbac"></script>
+    <script src="./assets/calculator-core.js?v=20260707-crm-rbac"></script>
+    <script src="./assets/sku-data.js?v=20260707-crm-rbac"></script>
+    <script src="./assets/scenic-verification-data.js?v=20260707-crm-rbac"></script>
+    <script src="./assets/fulfillment-data.js?v=20260707-auto-sync"></script>
+    <script src="./assets/app.js?v=20260707-dashboard-funnel-gaps-v2"></script>
   </body>
 </html>

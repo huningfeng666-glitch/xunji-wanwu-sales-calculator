@@ -91,12 +91,16 @@
     return clamp(rawScore / rawMax, 0, 1) * weight;
   }
 
-  function stageScoreBandThresholds(scoring, stage) {
+  function stageScoreBandThresholds(scoring, stage, gradeCaps = {}) {
     const weights = normalizedStageWeights(scoring);
     const weight = weights[stage] || defaultStageWeights[stage] || 0;
-    if (stage === "T2") return [weight * 0.6, weight * 0.4, weight * 0.3];
-    if (stage === "T1") return [weight * 0.85, weight * 0.68, weight * 0.5];
-    return [weight * 0.85, weight * 0.7, weight * 0.55];
+    const ratio = (key, fallback) => {
+      const value = Number(gradeCaps[key]);
+      return Number.isFinite(value) ? value : fallback;
+    };
+    if (stage === "T2") return [weight * ratio("t2SampleRatio", 0.6), weight * ratio("t2ResourceRatio", 0.4), weight * 0.3];
+    if (stage === "T1") return [weight * ratio("t0t1SampleRatio", 0.85), weight * ratio("t0t1LightRatio", 0.68), weight * ratio("t0t1BaseRatio", 0.5)];
+    return [weight * ratio("t0t1SampleRatio", 0.85), weight * ratio("t0t1LightRatio", 0.7), weight * ratio("t0t1BaseRatio", 0.55)];
   }
 
   function getGradeOrder(rules) {
@@ -350,7 +354,7 @@
       band: visitorBand.label
     });
     const ticketGroup = scoring.ticket;
-    const ticketBand = scenario.ticketMode === "收费"
+    const ticketBand = scenario.ticketMode !== "免费"
       ? scoreFromThresholds(ticketGroup.thresholds, scenario.ticketPrice)
       : { score: ticketGroup.freeScore, label: "免费开放" };
     const ticketMax = groupMax(ticketGroup, 4);
@@ -390,26 +394,27 @@
     const rawGrade = hasVeto ? "D" : gradeByScore(rules, score);
     const gradeCapReasons = [];
     let grade = rawGrade;
-    const [t0SampleLine, t0LightLine, t0BaseLine] = stageScoreBandThresholds(scoring, "T0");
-    const [t1SampleLine, t1LightLine, t1BaseLine] = stageScoreBandThresholds(scoring, "T1");
-    const [t2SampleLine, t2ResourceLine, t2MediumLine] = stageScoreBandThresholds(scoring, "T2");
-    if (!hasVeto) {
+    const gradeCaps = rules.gradeCaps || {};
+    const [t0SampleLine, t0LightLine, t0BaseLine] = stageScoreBandThresholds(scoring, "T0", gradeCaps);
+    const [t1SampleLine, t1LightLine, t1BaseLine] = stageScoreBandThresholds(scoring, "T1", gradeCaps);
+    const [t2SampleLine, t2ResourceLine, t2MediumLine] = stageScoreBandThresholds(scoring, "T2", gradeCaps);
+    if (!hasVeto && gradeCaps.enabled === true) {
       if (t0Score < t0BaseLine || t1Score < t1BaseLine) {
-        grade = capGrade(rules, grade, "D");
+        grade = capGrade(rules, grade, gradeCaps.t0t1BaseMaxGrade || "D");
         gradeCapReasons.push("T0/T1未过基础线");
       } else {
         if (t0Score < t0LightLine || t1Score < t1LightLine) {
-          grade = capGrade(rules, grade, "C");
+          grade = capGrade(rules, grade, gradeCaps.t0t1LightMaxGrade || "C");
           gradeCapReasons.push("T0/T1仅适合轻试");
         } else if (t0Score < t0SampleLine || t1Score < t1SampleLine) {
-          grade = capGrade(rules, grade, "B");
+          grade = capGrade(rules, grade, gradeCaps.t0t1SampleMaxGrade || "B");
           gradeCapReasons.push("T0/T1未达样板强度");
         }
         if (t2Score < t2ResourceLine) {
-          grade = capGrade(rules, grade, "B");
+          grade = capGrade(rules, grade, gradeCaps.t2ResourceMaxGrade || "B");
           gradeCapReasons.push("T2官方/资源支持弱");
         } else if (t2Score < t2SampleLine) {
-          grade = capGrade(rules, grade, "A");
+          grade = capGrade(rules, grade, gradeCaps.t2SampleMaxGrade || "A");
           gradeCapReasons.push("T2暂不足以做S级样板");
         }
       }
@@ -511,13 +516,11 @@
 
   function matchPurchaseTier(rules, productClass, productType, qty) {
     const quantity = toNumber(qty);
-    return rules.purchaseTiers.find((tier) => (
-      tier.enabled &&
-      tier.productClass === productClass &&
-      tier.productType === productType &&
-      quantity >= toNumber(tier.minQty) &&
-      quantity <= toNumber(tier.maxQty)
-    ));
+    const tiers = Array.isArray(rules.purchaseTiers) ? rules.purchaseTiers : [];
+    return [...tiers]
+      .filter((tier) => tier.enabled)
+      .sort((a, b) => toNumber(a.minQty) - toNumber(b.minQty))
+      .find((tier) => quantity >= toNumber(tier.minQty) && quantity <= toNumber(tier.maxQty, 999999999));
   }
 
   function matchTotalPolicy(rules, totalQty) {
@@ -700,7 +703,7 @@
     const commissionReceiptBase = isConsignmentMode ? top3SalesReceipt : purchaseReceiptAmount;
     const commissionShareOfReceipt = commissionReceiptBase > 0 ? monthlyCommission / commissionReceiptBase : 0;
     const bonus = expansionBonusForGrade(rules, effectiveGrade);
-    const income = toNumber(rules.salaryBase) + monthlyCommission + bonus;
+    const income = monthlyCommission + bonus;
     const baselineSettlement = retail * baselineSettlementRatio;
     const baselineGrossMargin = baselineSettlement - cost.totalCost;
     const baselineDistributableMargin = Math.max(0, baselineGrossMargin - managementReserve);

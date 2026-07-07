@@ -16,6 +16,34 @@ const defaultScenario = core.calculate(data, {
 });
 
 assert.deepEqual(data.rules.ui.ruleOrder, ["price", "grade", "scoring", "purchase", "commission", "sellThrough"]);
+assert.equal(data.rules.gradeCaps.enabled, false, "默认不启用隐藏等级封顶");
+const wuzhenNodes = data.scenicSpots.filter((spot) => spot.id === "S001" || spot.parentId === "S001");
+const scenicParents = data.scenicSpots.filter((spot) => spot.nodeType === "parent");
+const scenicChildren = data.scenicSpots.filter((spot) => spot.parentId);
+const parentIdsWithoutChildren = scenicParents
+  .map((spot) => spot.id)
+  .filter((id) => !scenicChildren.some((spot) => spot.parentId === id));
+assert.ok(data.scenicSpots.length >= 1100, "景区库应包含父级与批量子级点位");
+assert.equal(parentIdsWithoutChildren.length, 0, "每个父级景区都必须至少有一个子级点位");
+assert.ok(scenicChildren.filter((spot) => spot.annualVisitorsUnknown).length >= 500, "批量生成子级必须保留客流不清楚口径");
+assert.deepEqual(wuzhenNodes.map((spot) => spot.id), ["S001", "S001-XZ", "S001-DZ", "S001-NZ", "S001-WC"]);
+assert.equal(wuzhenNodes.find((spot) => spot.id === "S001").nodeType, "parent");
+assert.equal(wuzhenNodes.find((spot) => spot.id === "S001-XZ").annualVisitors, 478.99);
+assert.equal(wuzhenNodes.find((spot) => spot.id === "S001-DZ").annualVisitors, 206.06);
+assert.equal(wuzhenNodes.find((spot) => spot.id === "S001-XZ").verificationSourceCount, 2);
+assert.equal(wuzhenNodes.find((spot) => spot.id === "S001-DZ").verificationSourceCount, 2);
+assert.equal(wuzhenNodes.find((spot) => spot.id === "S001-NZ").annualVisitorsUnknown, true);
+assert.ok(wuzhenNodes.find((spot) => spot.id === "S001-NZ").dataStatus.includes("不清楚"));
+assert.equal(wuzhenNodes.find((spot) => spot.id === "S001-WC").ticketPriceUnknown, true);
+assert.deepEqual(
+  data.rules.purchaseTiers.map((tier) => ({ minQty: tier.minQty, maxQty: tier.maxQty, discount: tier.discount })),
+  [
+    { minQty: 0, maxQty: 49, discount: 1 },
+    { minQty: 50, maxQty: 149, discount: 0.55 },
+    { minQty: 150, maxQty: 299, discount: 0.5 },
+    { minQty: 300, maxQty: 999999, discount: 0.45 }
+  ]
+);
 assert.ok(data.rules.consignmentIncentives.length >= 1, "一级域06保留寄售动销激励");
 assert.ok(data.rules.sellThroughFactors.length >= 1, "一级域06保留动销评级");
 assert.equal(defaultScenario.scenario.grade, "A");
@@ -98,10 +126,10 @@ assert.equal(sGradeHandPaint.business.gradeParam.mode, data.rules.gradeParams.S.
 assert.equal(sGradeHandPaint.business.ruleStockLimit, data.rules.gradeParams.S.stockLimit);
 close(sGradeHandPaint.scenario.score, 97.4, "S级示例综合分");
 close(sGradeHandPaint.cost.totalCost, 15, "P001总成本");
-assert.equal(sGradeHandPaint.purchase.tier.name, "批量二档");
-close(sGradeHandPaint.purchase.tierUnitPrice, 31.96, "P001阶梯采购单价");
+assert.equal(sGradeHandPaint.purchase.tier.name, "50-149片 · 5.5折");
+close(sGradeHandPaint.purchase.tierUnitPrice, 37.4, "P001阶梯采购单价");
 close(sGradeHandPaint.consignment.capUnitPrice, 36.04, "P001寄售结算价上限");
-assert.equal(sGradeHandPaint.purchase.status, "通过");
+assert.equal(sGradeHandPaint.purchase.status, "需下调");
 
 const allMaxScenario = {
   ...data.defaultInputs.scenario,
@@ -197,8 +225,20 @@ const earlyMarketTrial = core.calculate(data, {
 });
 
 assert.equal(earlyMarketTrial.scenario.rawGrade, "A");
-assert.equal(earlyMarketTrial.scenario.grade, "B");
-assert.ok(earlyMarketTrial.scenario.risk.includes("T2官方/资源支持弱"));
+assert.equal(earlyMarketTrial.scenario.grade, "A");
+assert.ok(!earlyMarketTrial.scenario.risk.includes("T2官方/资源支持弱"));
+
+const enabledCapData = core.clone(data);
+enabledCapData.rules.gradeCaps.enabled = true;
+const earlyMarketTrialWithCap = core.calculate(enabledCapData, {
+  productId: "P001",
+  scenario: earlyMarketTrial.inputs.scenario,
+  channel: data.defaultInputs.channel
+});
+
+assert.equal(earlyMarketTrialWithCap.scenario.rawGrade, "A");
+assert.equal(earlyMarketTrialWithCap.scenario.grade, "B");
+assert.ok(earlyMarketTrialWithCap.scenario.risk.includes("T2官方/资源支持弱"));
 
 const craftNeedsAdjustment = core.calculate(data, {
   productId: "P003",
@@ -214,8 +254,8 @@ const craftNeedsAdjustment = core.calculate(data, {
 });
 
 assert.equal(craftNeedsAdjustment.productType, "工艺款");
-assert.equal(craftNeedsAdjustment.purchase.tier.name, "基础采购");
-close(craftNeedsAdjustment.purchase.tierUnitPrice, 51.04, "P003阶梯采购单价");
+assert.equal(craftNeedsAdjustment.purchase.tier.name, "50片以下无折扣");
+close(craftNeedsAdjustment.purchase.tierUnitPrice, 88, "P003阶梯采购单价");
 close(craftNeedsAdjustment.consignment.capUnitPrice, 46.64, "P003寄售结算价上限");
 close(craftNeedsAdjustment.purchase.finalUnitPrice, 46.64, "P003最终采购单价");
 assert.equal(craftNeedsAdjustment.purchase.status, "需下调");
@@ -393,7 +433,7 @@ const customProduct = core.calculate(customData, {
 
 close(customProduct.cost.totalCost, 20, "新增产品总成本");
 close(customProduct.cost.minRetail, 68, "新增产品最低价带");
-assert.equal(customProduct.purchase.tier.name, "批量一档");
+assert.equal(customProduct.purchase.tier.name, "50片以下无折扣");
 
 const customBandData = core.clone(data);
 customBandData.products.push({

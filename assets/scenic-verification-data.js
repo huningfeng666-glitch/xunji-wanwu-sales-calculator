@@ -1,16 +1,18 @@
 (function attachScenicVerificationData(root) {
   const data = {
   "meta": {
-    "generatedAt": "2026-07-05T22:55:19+08:00",
-    "sourceRows": 543,
+    "generatedAt": "2026-07-06T22:36:20+08:00",
+    "sourceRows": 547,
     "statusCounts": {
-      "multi_channel_verified": 5,
-      "official_list_verified": 538
+      "multi_channel_verified": 7,
+      "official_list_verified": 538,
+      "needs_recheck": 2
     },
-    "trafficVerifiedRows": 5,
-    "businessDataUsableRows": 5,
+    "trafficVerifiedRows": 7,
+    "businessDataUsableRows": 6,
     "sourceHealthCounts": {
-      "reachable": 9
+      "reachable": 8,
+      "unreachable": 1
     },
     "verificationRule": "2025客流/收入等经营数据必须满足：一手官方/年报/运营方来源，或两个独立公开来源相互印证；否则只保留为基础库线索，不作为商务依据。",
     "allowedSources": [
@@ -23,26 +25,123 @@
   "spots": {
     "S001": {
       "id": "S001",
-      "name": "乌镇西栅/东栅景区",
+      "name": "乌镇景区（父级）",
       "verificationStatus": "multi_channel_verified",
-      "verificationStatusLabel": "多渠道已核",
+      "verificationStatusLabel": "父级汇总已核，子级需分开",
       "verificationSourceCount": 2,
       "verificationChannels": [
-        "文化和旅游部国家5A级旅游景区名单",
-        "中青旅2025年年报公开披露"
+        "中青旅2025年年报公开披露",
+        "乌镇旅游官方网站票务政策"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-07T12:00:00+08:00",
       "trafficVerified": true,
-      "businessDataUsable": true,
-      "dataTrustLevel": "可作为初步商务依据",
+      "businessDataUsable": false,
+      "dataTrustLevel": "父级汇总可作目的地背书，不作单店商务依据",
       "sourceHealth": {
         "url": "https://www.cyts.com/news/getDetail?id=11573",
         "reachable": true,
         "httpStatus": 200,
         "error": ""
       },
-      "verificationNote": "景区公开身份与2025经营数据均有公开来源支撑",
+      "verificationNote": "父级客流可核，但正式测算必须选择西栅、东栅、南栅、乌村等子级片区或具体店位。",
+      "verificationWarnings": [
+        "不得把父级685.05万人次直接套给任一门店"
+      ]
+    },
+    "S001-XZ": {
+      "id": "S001-XZ",
+      "name": "乌镇西栅景区",
+      "verificationStatus": "multi_channel_verified",
+      "verificationStatusLabel": "子级客流/票价已核",
+      "verificationSourceCount": 2,
+      "verificationChannels": [
+        "中青旅2025年年报公开披露",
+        "乌镇官方票务政策"
+      ],
+      "verificationCheckedAt": "2026-07-07T12:00:00+08:00",
+      "trafficVerified": true,
+      "businessDataUsable": true,
+      "dataTrustLevel": "可作公开基础库口径，商务前仍需复核店位",
+      "sourceHealth": {
+        "url": "https://www.cyts.com/news/getDetail?id=11573",
+        "reachable": true,
+        "httpStatus": 200,
+        "error": ""
+      },
+      "verificationNote": "2025年西栅子级客流和官方票务口径可核；店位、商务、授权仍由销售填报。",
       "verificationWarnings": []
+    },
+    "S001-DZ": {
+      "id": "S001-DZ",
+      "name": "乌镇东栅景区",
+      "verificationStatus": "multi_channel_verified",
+      "verificationStatusLabel": "子级客流/票价已核",
+      "verificationSourceCount": 2,
+      "verificationChannels": [
+        "中青旅2025年年报公开披露",
+        "乌镇官方票务政策"
+      ],
+      "verificationCheckedAt": "2026-07-07T12:00:00+08:00",
+      "trafficVerified": true,
+      "businessDataUsable": true,
+      "dataTrustLevel": "可作公开基础库口径，商务前仍需复核店位",
+      "sourceHealth": {
+        "url": "https://www.cyts.com/news/getDetail?id=11573",
+        "reachable": true,
+        "httpStatus": 200,
+        "error": ""
+      },
+      "verificationNote": "2025年东栅子级客流和官方票务口径可核；不得直接套用西栅消费心智。",
+      "verificationWarnings": []
+    },
+    "S001-NZ": {
+      "id": "S001-NZ",
+      "name": "乌镇南栅历史街区",
+      "verificationStatus": "needs_recheck",
+      "verificationStatusLabel": "不清楚：缺少子级年客流",
+      "verificationSourceCount": 1,
+      "verificationChannels": [
+        "乌镇旅游官方网站票务政策线索"
+      ],
+      "verificationCheckedAt": "2026-07-07T12:00:00+08:00",
+      "trafficVerified": false,
+      "businessDataUsable": false,
+      "dataTrustLevel": "仅作销售线索，不作商务依据",
+      "sourceHealth": {
+        "url": "https://www.wuzhen.com.cn/web/traver/info",
+        "reachable": true,
+        "httpStatus": 200,
+        "error": ""
+      },
+      "verificationNote": "公开来源未找到南栅2025单点年客流；界面明确标记不清楚。",
+      "verificationWarnings": [
+        "不得继承父级、西栅或东栅客流"
+      ]
+    },
+    "S001-WC": {
+      "id": "S001-WC",
+      "name": "乌镇乌村",
+      "verificationStatus": "needs_recheck",
+      "verificationStatusLabel": "不清楚：客流/单票待核",
+      "verificationSourceCount": 1,
+      "verificationChannels": [
+        "乌镇官方预订平台票务产品线索"
+      ],
+      "verificationCheckedAt": "2026-07-07T12:00:00+08:00",
+      "trafficVerified": false,
+      "businessDataUsable": false,
+      "dataTrustLevel": "仅作销售线索，不作商务依据",
+      "sourceHealth": {
+        "url": "https://www.ewuzhen.com/ticket/list",
+        "reachable": true,
+        "httpStatus": 200,
+        "error": ""
+      },
+      "verificationNote": "公开来源未找到乌村2025单点年客流，且票务多为度假/套餐口径；界面明确标记不清楚。",
+      "verificationWarnings": [
+        "不得继承父级、西栅或东栅客流",
+        "标准单票口径需销售或运营方确认"
+      ]
     },
     "S002": {
       "id": "S002",
@@ -53,7 +152,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -77,7 +176,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -101,7 +200,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -125,7 +224,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -149,7 +248,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -173,7 +272,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -197,7 +296,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -221,7 +320,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -245,7 +344,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -269,7 +368,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -293,7 +392,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -317,7 +416,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -341,7 +440,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -365,7 +464,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -389,7 +488,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -413,7 +512,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -437,7 +536,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -461,7 +560,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -485,7 +584,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -509,7 +608,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -533,7 +632,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -557,7 +656,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -581,7 +680,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -605,7 +704,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -629,7 +728,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -653,7 +752,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -677,7 +776,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -701,7 +800,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -725,7 +824,7 @@
       "verificationChannels": [
         "公开文旅线索/销售待核"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -749,7 +848,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -773,7 +872,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -797,7 +896,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -821,7 +920,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -845,7 +944,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -869,7 +968,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -893,7 +992,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -917,7 +1016,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -941,7 +1040,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -965,7 +1064,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -989,7 +1088,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1013,7 +1112,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1037,7 +1136,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1061,7 +1160,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1085,7 +1184,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1109,7 +1208,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1133,7 +1232,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1157,7 +1256,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1181,7 +1280,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1205,7 +1304,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1229,7 +1328,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1253,7 +1352,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1277,7 +1376,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1301,7 +1400,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1325,7 +1424,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1349,7 +1448,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1373,7 +1472,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1397,7 +1496,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1421,7 +1520,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1445,7 +1544,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1469,7 +1568,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1493,7 +1592,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1517,7 +1616,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1541,7 +1640,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1565,7 +1664,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1589,7 +1688,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1613,7 +1712,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1637,7 +1736,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1661,7 +1760,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1685,7 +1784,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1709,7 +1808,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1733,7 +1832,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1757,7 +1856,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1781,7 +1880,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1805,7 +1904,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1829,7 +1928,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1853,7 +1952,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1877,7 +1976,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1901,7 +2000,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1925,7 +2024,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1949,7 +2048,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1973,7 +2072,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -1997,7 +2096,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2021,7 +2120,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2045,7 +2144,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2069,7 +2168,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2093,7 +2192,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2117,7 +2216,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2141,7 +2240,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2165,7 +2264,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2189,7 +2288,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2213,7 +2312,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2237,7 +2336,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2261,7 +2360,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2285,7 +2384,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2309,7 +2408,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2333,7 +2432,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2357,7 +2456,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2381,7 +2480,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2405,7 +2504,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2429,7 +2528,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2453,7 +2552,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2477,7 +2576,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2501,7 +2600,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2525,7 +2624,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2549,7 +2648,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2573,7 +2672,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2597,7 +2696,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2621,7 +2720,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2645,7 +2744,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2669,7 +2768,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2693,7 +2792,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2717,7 +2816,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2741,7 +2840,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2765,7 +2864,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2789,7 +2888,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2813,7 +2912,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2837,7 +2936,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2861,7 +2960,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2885,7 +2984,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2909,7 +3008,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2933,7 +3032,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2957,7 +3056,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -2981,7 +3080,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3005,7 +3104,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3029,7 +3128,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3053,7 +3152,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3070,14 +3169,14 @@
     },
     "S128": {
       "id": "S128",
-      "name": "山西省临汾市)",
+      "name": "黄河壶口瀑布旅游区",
       "verificationStatus": "official_list_verified",
       "verificationStatusLabel": "官方名单已核，经营数据待核",
       "verificationSourceCount": 1,
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3101,7 +3200,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3125,7 +3224,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3149,7 +3248,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3173,7 +3272,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3197,7 +3296,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3221,7 +3320,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3245,7 +3344,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3269,7 +3368,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3293,7 +3392,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3317,7 +3416,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3341,7 +3440,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3365,7 +3464,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3389,7 +3488,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3413,7 +3512,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3437,7 +3536,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3461,7 +3560,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3485,7 +3584,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3509,7 +3608,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3533,7 +3632,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3557,7 +3656,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3581,7 +3680,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3605,7 +3704,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3629,7 +3728,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3653,7 +3752,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3677,7 +3776,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3701,7 +3800,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3725,7 +3824,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3750,7 +3849,7 @@
         "文化和旅游部国家5A级旅游景区名单",
         "长白山2025年年报公开披露"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": true,
       "businessDataUsable": true,
       "dataTrustLevel": "可作为初步商务依据",
@@ -3772,7 +3871,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3796,7 +3895,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3820,7 +3919,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3844,7 +3943,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3868,7 +3967,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3892,7 +3991,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3916,7 +4015,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3940,7 +4039,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3964,7 +4063,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -3988,7 +4087,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4012,7 +4111,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4036,7 +4135,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4060,7 +4159,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4084,7 +4183,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4108,7 +4207,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4132,7 +4231,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4156,7 +4255,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4180,7 +4279,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4204,7 +4303,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4228,7 +4327,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4252,7 +4351,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4276,7 +4375,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4300,7 +4399,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4324,7 +4423,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4348,7 +4447,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4372,7 +4471,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4396,7 +4495,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4420,7 +4519,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4444,7 +4543,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4468,7 +4567,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4492,7 +4591,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4516,7 +4615,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4540,7 +4639,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4564,7 +4663,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4588,7 +4687,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4612,7 +4711,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4636,7 +4735,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4660,7 +4759,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4684,7 +4783,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4708,7 +4807,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4732,7 +4831,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4756,7 +4855,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4780,7 +4879,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4804,7 +4903,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4828,7 +4927,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4852,7 +4951,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4876,7 +4975,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4900,7 +4999,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4924,7 +5023,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4948,7 +5047,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4972,7 +5071,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -4996,7 +5095,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5020,7 +5119,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5044,7 +5143,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5068,7 +5167,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5092,7 +5191,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5117,7 +5216,7 @@
         "文化和旅游部国家5A级旅游景区名单",
         "黄山旅游2025年年报公开披露"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": true,
       "businessDataUsable": true,
       "dataTrustLevel": "可作为初步商务依据",
@@ -5139,7 +5238,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5163,7 +5262,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5187,7 +5286,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5211,7 +5310,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5235,7 +5334,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5259,7 +5358,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5283,7 +5382,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5307,7 +5406,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5331,7 +5430,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5355,7 +5454,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5379,7 +5478,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5403,7 +5502,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5427,7 +5526,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5451,7 +5550,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5475,7 +5574,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5499,7 +5598,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5523,7 +5622,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5547,7 +5646,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5571,7 +5670,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5595,7 +5694,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5619,7 +5718,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5643,7 +5742,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5667,7 +5766,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5691,7 +5790,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5715,7 +5814,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5739,7 +5838,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5763,7 +5862,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5787,7 +5886,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5811,7 +5910,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5835,7 +5934,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5859,7 +5958,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5883,7 +5982,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5907,7 +6006,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5931,7 +6030,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5955,7 +6054,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -5979,7 +6078,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6003,7 +6102,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6027,7 +6126,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6051,7 +6150,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6075,7 +6174,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6099,7 +6198,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6123,7 +6222,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6147,7 +6246,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6171,7 +6270,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6195,7 +6294,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6219,7 +6318,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6243,7 +6342,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6267,7 +6366,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6291,7 +6390,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6315,7 +6414,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6339,7 +6438,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6363,7 +6462,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6387,7 +6486,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6411,7 +6510,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6435,7 +6534,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6459,7 +6558,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6483,7 +6582,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6507,7 +6606,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6531,7 +6630,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6555,7 +6654,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6579,7 +6678,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6603,7 +6702,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6627,7 +6726,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6651,7 +6750,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6675,7 +6774,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6699,7 +6798,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6723,7 +6822,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6747,7 +6846,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6771,7 +6870,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6795,7 +6894,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6819,7 +6918,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6843,7 +6942,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6867,7 +6966,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6891,7 +6990,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6915,7 +7014,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6939,7 +7038,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6963,7 +7062,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -6987,7 +7086,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7011,7 +7110,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7035,7 +7134,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7059,7 +7158,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7083,7 +7182,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7107,7 +7206,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7131,7 +7230,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7155,7 +7254,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7179,7 +7278,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7203,7 +7302,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7227,7 +7326,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7251,7 +7350,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7275,7 +7374,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7299,7 +7398,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7323,7 +7422,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7347,7 +7446,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7371,7 +7470,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7395,7 +7494,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7419,7 +7518,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7443,7 +7542,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7467,7 +7566,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7491,7 +7590,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7515,7 +7614,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7539,7 +7638,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7563,7 +7662,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7587,7 +7686,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7611,7 +7710,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7635,7 +7734,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7659,7 +7758,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7683,7 +7782,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7707,7 +7806,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7731,7 +7830,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7755,7 +7854,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7779,7 +7878,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7803,7 +7902,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7827,7 +7926,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7851,7 +7950,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7875,7 +7974,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7899,19 +7998,20 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
       "sourceHealth": {
         "url": "https://www.jiuzhai.com/news/scenic-news/10741-2025-10-23-19-27-29",
-        "reachable": true,
-        "httpStatus": 200,
-        "error": ""
+        "reachable": false,
+        "httpStatus": 403,
+        "error": "Forbidden"
       },
       "verificationNote": "景区可进入基础库；2025客流、收入、店位、商务资源仍需销售或运营方补证",
       "verificationWarnings": [
-        "2025客流/经营数据未完成多渠道核验，不得作为最终商务条件依据"
+        "2025客流/经营数据未完成多渠道核验，不得作为最终商务条件依据",
+        "来源链接本次访问异常，需人工复核原始出处"
       ]
     },
     "S330": {
@@ -7924,7 +8024,7 @@
         "文化和旅游部国家5A级旅游景区名单",
         "峨眉山A 2025年年报公开披露（澎湃新闻转述）"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": true,
       "businessDataUsable": true,
       "dataTrustLevel": "可作为初步商务依据",
@@ -7946,7 +8046,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7970,7 +8070,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -7994,7 +8094,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8018,7 +8118,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8042,7 +8142,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8066,7 +8166,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8090,7 +8190,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8115,7 +8215,7 @@
         "文化和旅游部国家5A级旅游景区名单",
         "人民网/新华网官方媒体公开报道"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": true,
       "businessDataUsable": true,
       "dataTrustLevel": "可作为初步商务依据",
@@ -8137,7 +8237,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8161,7 +8261,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8185,7 +8285,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8209,7 +8309,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8233,7 +8333,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8257,7 +8357,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8281,7 +8381,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8305,7 +8405,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8329,7 +8429,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8353,7 +8453,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8377,7 +8477,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8401,7 +8501,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8425,7 +8525,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8449,7 +8549,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8473,7 +8573,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8497,7 +8597,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8521,7 +8621,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8545,7 +8645,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8569,7 +8669,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8593,7 +8693,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8617,7 +8717,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8641,7 +8741,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8665,7 +8765,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8689,7 +8789,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8713,7 +8813,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8737,7 +8837,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8761,7 +8861,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8785,7 +8885,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8809,7 +8909,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8833,7 +8933,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8857,7 +8957,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8881,7 +8981,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8905,7 +9005,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8929,7 +9029,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8953,7 +9053,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -8977,7 +9077,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9001,7 +9101,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9025,7 +9125,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9049,7 +9149,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9073,7 +9173,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9097,7 +9197,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9121,7 +9221,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9145,7 +9245,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9169,7 +9269,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9193,7 +9293,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9217,7 +9317,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9241,7 +9341,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9265,7 +9365,7 @@
       "verificationChannels": [
         "文化和旅游部国家5A级旅游景区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9289,7 +9389,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9313,7 +9413,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9337,7 +9437,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9361,7 +9461,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9385,7 +9485,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9409,7 +9509,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9433,7 +9533,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9457,7 +9557,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9481,7 +9581,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9505,7 +9605,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9529,7 +9629,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9553,7 +9653,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9577,7 +9677,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9601,7 +9701,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9625,7 +9725,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9649,7 +9749,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9673,7 +9773,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9697,7 +9797,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9721,7 +9821,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9745,7 +9845,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9769,7 +9869,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9793,7 +9893,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9817,7 +9917,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9841,7 +9941,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9865,7 +9965,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9889,7 +9989,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9913,7 +10013,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9937,7 +10037,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9961,7 +10061,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -9985,7 +10085,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10009,7 +10109,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10033,7 +10133,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10057,7 +10157,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10081,7 +10181,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10105,7 +10205,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10129,7 +10229,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10153,7 +10253,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10177,7 +10277,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10201,7 +10301,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10225,7 +10325,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10249,7 +10349,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10273,7 +10373,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10297,7 +10397,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10321,7 +10421,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10345,7 +10445,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10369,7 +10469,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10393,7 +10493,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10417,7 +10517,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10441,7 +10541,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10465,7 +10565,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10489,7 +10589,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10513,7 +10613,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10537,7 +10637,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10561,7 +10661,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10585,7 +10685,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10609,7 +10709,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10633,7 +10733,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10657,7 +10757,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10681,7 +10781,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10705,7 +10805,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10729,7 +10829,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10753,7 +10853,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10777,7 +10877,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10801,7 +10901,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10825,7 +10925,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10849,7 +10949,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10873,7 +10973,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10897,7 +10997,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10921,7 +11021,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10945,7 +11045,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10969,7 +11069,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -10993,7 +11093,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11017,7 +11117,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11041,7 +11141,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11065,7 +11165,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11089,7 +11189,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11113,7 +11213,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11137,7 +11237,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11161,7 +11261,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11185,7 +11285,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11209,7 +11309,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11233,7 +11333,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11257,7 +11357,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11281,7 +11381,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11305,7 +11405,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11329,7 +11429,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11353,7 +11453,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11377,7 +11477,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11401,7 +11501,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11425,7 +11525,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11449,7 +11549,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11473,7 +11573,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11497,7 +11597,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11521,7 +11621,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11545,7 +11645,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11569,7 +11669,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11593,7 +11693,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11617,7 +11717,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11641,7 +11741,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11665,7 +11765,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11689,7 +11789,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11713,7 +11813,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11737,7 +11837,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11761,7 +11861,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11785,7 +11885,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11809,7 +11909,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11833,7 +11933,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11857,7 +11957,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11881,7 +11981,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11905,7 +12005,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11929,7 +12029,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11953,7 +12053,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -11977,7 +12077,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12001,7 +12101,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12025,7 +12125,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12049,7 +12149,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12073,7 +12173,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12097,7 +12197,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12121,7 +12221,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12145,7 +12245,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12169,7 +12269,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12193,7 +12293,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12217,7 +12317,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12241,7 +12341,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12265,7 +12365,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12289,7 +12389,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12313,7 +12413,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12337,7 +12437,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12361,7 +12461,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12385,7 +12485,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12409,7 +12509,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12433,7 +12533,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12457,7 +12557,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12481,7 +12581,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12505,7 +12605,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12529,7 +12629,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12553,7 +12653,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12577,7 +12677,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12601,7 +12701,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12625,7 +12725,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12649,7 +12749,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12673,7 +12773,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12697,7 +12797,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12721,7 +12821,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12745,7 +12845,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12769,7 +12869,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12793,7 +12893,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12817,7 +12917,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12841,7 +12941,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12865,7 +12965,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12889,7 +12989,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12913,7 +13013,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12937,7 +13037,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12961,7 +13061,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -12985,7 +13085,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -13009,7 +13109,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",
@@ -13033,7 +13133,7 @@
       "verificationChannels": [
         "文化和旅游部国家级旅游休闲街区名单"
       ],
-      "verificationCheckedAt": "2026-07-05T22:55:19+08:00",
+      "verificationCheckedAt": "2026-07-06T22:36:20+08:00",
       "trafficVerified": false,
       "businessDataUsable": false,
       "dataTrustLevel": "仅可用于入库和初筛",

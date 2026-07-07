@@ -1,5 +1,5 @@
 (function attachDefaultData(root) {
-  const sourceCheckedAt = "2026-07-05";
+  const sourceCheckedAt = "2026-07-06";
   const scenicSourceMap = {
     "5A": {
       name: "文化和旅游部数据服务：国家5A级旅游景区名单，数据截止2025-03-11",
@@ -189,7 +189,7 @@
     scenicCandidate({ id: "S125", name: "野三坡景区", province: "河北", city: "保定", scenicLevel: "5A", source: "5A", scenicType: "其他", tileRelevance: "中：需通过地方故事转译", priorityTier: "机会候选", fitTags: ["5A"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 300, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2011年入选）；2025单点客流待运营方复核" }),
     scenicCandidate({ id: "S126", name: "白洋淀景区", province: "河北", city: "保定", scenicLevel: "5A", source: "5A", scenicType: "其他", tileRelevance: "中：需通过地方故事转译", priorityTier: "机会候选", fitTags: ["5A"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 300, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2007年入选）；2025单点客流待运营方复核" }),
     scenicCandidate({ id: "S127", name: "乔家大院景区", province: "山西", city: "晋中", scenicLevel: "5A", source: "5A", scenicType: "其他", tileRelevance: "中：需通过地方故事转译", priorityTier: "机会候选", fitTags: ["5A"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 300, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2014/2024年入选）；2025单点客流待运营方复核" }),
-    scenicCandidate({ id: "S128", name: "山西省临汾市)", province: "山西", city: "黄河壶口瀑布旅游区(陕西省延安", scenicLevel: "5A", source: "5A", scenicType: "其他", tileRelevance: "中：需通过地方故事转译", priorityTier: "机会候选", fitTags: ["5A"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 300, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2022年入选）；2025单点客流待运营方复核" }),
+    scenicCandidate({ id: "S128", name: "黄河壶口瀑布旅游区", province: "山西", city: "临汾/陕西延安", scenicLevel: "5A", source: "5A", scenicType: "其他", tileRelevance: "中：需通过地方故事转译", priorityTier: "机会候选", fitTags: ["5A"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 300, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2022年入选，陕西省延安市·山西省临汾市）；2025单点客流待运营方复核" }),
     scenicCandidate({ id: "S129", name: "云丘山景区", province: "山西", city: "临汾", scenicLevel: "5A", source: "5A", scenicType: "自然山水景区", tileRelevance: "弱：主要靠产品颜值解释", priorityTier: "低优先补充", fitTags: ["5A", "低T0补库"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 200, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2020年入选）；2025单点客流待运营方复核" }),
     scenicCandidate({ id: "S130", name: "太行山大峡谷八泉峡景区", province: "山西", city: "长治", scenicLevel: "5A", source: "5A", scenicType: "自然山水景区", tileRelevance: "弱：主要靠产品颜值解释", priorityTier: "低优先补充", fitTags: ["5A", "低T0补库"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 200, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2019年入选）；2025单点客流待运营方复核" }),
     scenicCandidate({ id: "S131", name: "洪洞大槐树寻根祭祖园旅游景区", province: "山西", city: "临汾", scenicLevel: "5A", source: "5A", scenicType: "自然山水景区", tileRelevance: "弱：主要靠产品颜值解释", priorityTier: "低优先补充", fitTags: ["5A", "低T0补库"], ticketMode: "收费", ticketPrice: 80, annualVisitors: 200, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家5A级旅游景区名单（2018年入选）；2025单点客流待运营方复核" }),
@@ -606,6 +606,136 @@
     scenicCandidate({ id: "S542", name: "第四师可克达拉市草原之夜文化旅游休闲街区", province: "兵团", city: "兵团", scenicLevel: "无/其他", source: "街区", scenicType: "城市地标/城市更新街区", tileRelevance: "中：需通过地方故事转译", priorityTier: "机会候选", fitTags: ["休闲街区"], ticketMode: "免费", ticketPrice: 0, annualVisitors: 300, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家级旅游休闲街区名单；2025单点客流待运营方复核" }),
     scenicCandidate({ id: "S543", name: "第八师石河子市幸福路步行街", province: "兵团", city: "兵团", scenicLevel: "无/其他", source: "街区", scenicType: "城市地标/城市更新街区", tileRelevance: "中：需通过地方故事转译", priorityTier: "机会候选", fitTags: ["休闲街区"], ticketMode: "免费", ticketPrice: 0, annualVisitors: 300, dataStatus: "官方名单已核/2025客流待复核", visitorDataBasis: "文旅部国家级旅游休闲街区名单；2025单点客流待运营方复核" })
   ];
+
+  function cleanScenicName(name) {
+    return String(name || "")
+      .replace(/旅游景区|风景名胜区|风景区|景区|旅游区|文化旅游区|休闲街区|旅游休闲街区/g, "")
+      .replace(/[（）()]/g, "")
+      .replace(/等$/, "")
+      .replace(/^[\s\-—·]+|[\s\-—·]+$/g, "")
+      .trim();
+  }
+
+  function splitChildAreaNames(name) {
+    const raw = String(name || "");
+    const stripped = raw.replace(/[（(][^）)]+[）)]/g, "");
+    const strippedHasSplitter = /[、/／｜|·•,，;；+＋-]/.test(stripped);
+    const bracketParts = Array.from(raw.matchAll(/[（(]([^）)]+)[）)]/g))
+      .flatMap((match) => match[1].replace(/等/g, "").split(/[、/／｜|·•,，;；+＋-]/))
+      .map((part) => cleanScenicName(part))
+      .filter((part) => part.length >= 2);
+    const splitParts = strippedHasSplitter
+      ? stripped
+        .split(/[、/／｜|·•,，;；+＋-]/)
+        .map((part) => cleanScenicName(part))
+        .filter((part) => part.length >= 2 && !/^中山陵园$/.test(part))
+      : [];
+    const parts = bracketParts.length && !strippedHasSplitter ? bracketParts : bracketParts.concat(splitParts);
+    return Array.from(new Set(parts))
+      .filter((part) => part && part.length <= 18)
+      .slice(0, 4);
+  }
+
+  function defaultSubAreaName(spot) {
+    const name = cleanScenicName(spot.name);
+    const type = String(spot.scenicType || "");
+    if (type.includes("街") || name.includes("街") || name.includes("巷") || name.includes("坊")) return `${name}核心街区`;
+    if (type.includes("古城") || type.includes("古镇") || name.includes("古城") || name.includes("古镇")) return `${name}核心古街区`;
+    if (type.includes("博物馆") || name.includes("博物馆") || name.includes("纪念馆")) return `${name}核心文博动线`;
+    if (type.includes("寺") || type.includes("佛") || type.includes("道教") || name.includes("寺")) return `${name}核心祈福动线`;
+    if (type.includes("园林") || type.includes("古建筑") || name.includes("宫") || name.includes("府") || name.includes("园")) return `${name}核心古建动线`;
+    return `${name}核心游览区`;
+  }
+
+  function childOperatingScene(spot, childName) {
+    const type = String(spot.scenicType || "");
+    if (type.includes("街") || childName.includes("街") || childName.includes("巷") || childName.includes("坊")) return "主街/节点门店/夜游消费动线待销售复核";
+    if (type.includes("博物馆") || childName.includes("博物馆") || childName.includes("纪念馆")) return "文博出口店/官方文创店/特展动线待销售复核";
+    if (type.includes("寺") || type.includes("佛") || type.includes("道教") || childName.includes("寺")) return "祈福动线/出口文创店/香游客消费场景待销售复核";
+    if (type.includes("园林") || type.includes("古建筑") || childName.includes("宫") || childName.includes("府") || childName.includes("园")) return "古建游线/游客中心/出口文创店待销售复核";
+    if (type.includes("古城") || type.includes("古镇") || childName.includes("古城") || childName.includes("古镇")) return "古街主入口/城门/游客中心/出口文创店待销售复核";
+    return "核心游览动线/游客中心/出口文创店待销售复核";
+  }
+
+  function buildChildScenicNode(parent, childName, index, total, isFallback) {
+    const isFree = parent.ticketMode === "免费";
+    const subAreaName = cleanScenicName(childName) || defaultSubAreaName(parent);
+    const childLabel = isFallback ? defaultSubAreaName(parent) : subAreaName;
+    const parentTrafficText = Number(parent.annualVisitors || 0) > 0 ? `${parent.annualVisitors}万人次` : "父级客流";
+    return {
+      ...parent,
+      id: `${parent.id}-Z${String(index + 1).padStart(2, "0")}`,
+      parentId: parent.id,
+      parentName: cleanScenicName(parent.name) || parent.name,
+      subAreaName: childLabel,
+      nodeType: "zone",
+      nodeTypeLabel: total > 1 ? "子级片区" : "子级点位",
+      dataGranularity: total > 1 ? "名称拆分子级线索" : "核心经营点位线索",
+      name: childLabel,
+      annualVisitors: 0,
+      annualVisitorsUnknown: true,
+      visitorDataBasis: `不清楚：公开库暂无${childLabel}2025子级年客流；不得继承${parent.name}父级${parentTrafficText}`,
+      ticketMode: isFree ? "免费" : "待核",
+      ticketPrice: 0,
+      ticketPriceUnknown: !isFree,
+      location: "",
+      store: "",
+      spendPower: "",
+      display: "",
+      authSupport: "",
+      displaySupport: "",
+      businessTerms: "",
+      cooperationEfficiency: "",
+      promotionSupport: "",
+      exclusiveProtection: "",
+      contractStability: "",
+      visitorProfile: "不清楚：子级客群结构待销售现场复核",
+      operatingScene: childOperatingScene(parent, childLabel),
+      inheritWarning: `不得把${parent.name}父级客流、门票或商务条件直接套用到${childLabel}`,
+      dataStatus: "不清楚：子级客流/门票/店位待销售复核",
+      verificationStatus: "needs_recheck",
+      verificationStatusLabel: "不清楚：子级经营数据待核",
+      verificationSourceCount: 1,
+      verificationChannels: [parent.sourceName || "父级公开名单线索"],
+      dataTrustLevel: "仅作销售线索，不作商务依据",
+      trafficVerified: false,
+      businessDataUsable: false,
+      unknownFields: ["2025子级年客流", "子级门票/联票口径", "具体店位/门店类型", "官方资源与商务条件"],
+      note: `由父级景区批量拆分生成的子级线索；正式测算前需销售确认${childLabel}的具体门店、客流、票务和授权资源。`
+    };
+  }
+
+  function expandScenicHierarchy(spots) {
+    const source = Array.isArray(spots) ? spots : [];
+    const parentIdsWithChildren = new Set(source.filter((spot) => spot.parentId).map((spot) => spot.parentId));
+    const expanded = [];
+    source.forEach((spot) => {
+      if (spot.parentId || spot.nodeType === "zone") {
+        expanded.push(spot);
+        return;
+      }
+      const parent = {
+        ...spot,
+        nodeType: "parent",
+        nodeTypeLabel: spot.nodeTypeLabel || "父级景区",
+        dataGranularity: spot.dataGranularity || "父级目的地",
+        operatingScene: spot.operatingScene || "父级目的地汇总，不建议直接用于正式测算",
+        inheritWarning: spot.inheritWarning || "正式测算需选择子级片区/具体店位，不能把父级客流直接套给任一门店",
+        businessDataUsable: false,
+        dataTrustLevel: spot.dataTrustLevel || "父级可作检索和背书，不作单店商务依据",
+        unknownFields: Array.from(new Set([...(spot.unknownFields || []), "具体子级店位客流"]))
+      };
+      expanded.push(parent);
+      if (parentIdsWithChildren.has(spot.id)) return;
+      const childNames = splitChildAreaNames(spot.name);
+      const isFallback = !childNames.length;
+      const children = (isFallback ? [defaultSubAreaName(spot)] : childNames)
+        .map((childName, index, all) => buildChildScenicNode(parent, childName, index, all.length, isFallback));
+      expanded.push(...children);
+    });
+    return expanded;
+  }
+
   const data = {
     meta: {
       appName: "寻迹万物销售测算台",
@@ -848,41 +978,202 @@
         }
       }
     ],
-    scenicSpots: [
+    scenicSpots: expandScenicHierarchy([
       {
         id: "S001",
-        name: "乌镇西栅/东栅景区",
+        name: "乌镇景区（父级）",
+        nodeType: "parent",
+        nodeTypeLabel: "父级景区",
+        dataGranularity: "父级目的地",
         province: "浙江",
         city: "嘉兴桐乡",
         scenicLevel: "5A",
         annualVisitors: 685.05,
         dataYear: 2025,
-        visitorDataBasis: "2025年乌镇景区接待游客685.05万人次，其中东栅206.06万人次、西栅478.99万人次；中青旅2025年年报口径",
+        visitorDataBasis: "父级汇总：2025年乌镇景区接待游客685.05万人次，其中东栅206.06万人次、西栅478.99万人次；中青旅2025年年报口径",
+        ticketMode: "混合",
+        ticketPrice: 0,
+        scenicType: "古城/古镇/古村落",
+        tileRelevance: "强：水乡屋檐/老街建筑天然承接",
+        commemorationMind: "强：旅行纪念/城市记忆明确",
+        youngSpread: "中高：亲子/年轻/城市漫游客混合",
+        culturalEndorsement: "国家5A/世界互联网大会/江南水乡文化",
+        visitorProfile: "父级混合口径，不直接代表西栅、东栅、南栅任一经营场景",
+        operatingScene: "父级目的地汇总，不建议直接用于正式测算",
+        inheritWarning: "正式测算需选择西栅/东栅/南栅/乌村等子级片区，不能把父级客流直接套给任一门店",
+        productSeries: "一城一瓦/古瓦典藏/江南水乡限定",
+        dataStatus: "父级2025客流已核/子级需分开使用",
+        verificationStatus: "multi_channel_verified",
+        verificationStatusLabel: "父级汇总已核，子级需分开",
+        verificationSourceCount: 2,
+        verificationChannels: ["中青旅2025年年报公开披露", "乌镇旅游官方网站票务政策"],
+        dataTrustLevel: "父级汇总可作目的地背书，不作单店商务依据",
+        trafficVerified: true,
+        businessDataUsable: false,
+        unknownFields: ["父级混合票价", "具体店位客流"],
+        sourceName: "文化和旅游部5A名单；中青旅2025年年报公开披露；乌镇旅游官方网站票务政策",
+        sourceUrl: "https://www.cyts.com/news/getDetail?id=11573",
+        sourceCheckedAt: "2026-07-07",
+        note: "父级仅用于检索和目的地背书；测算时优先选择具体片区或具体店位。"
+      },
+      {
+        id: "S001-XZ",
+        parentId: "S001",
+        parentName: "乌镇",
+        subAreaName: "西栅",
+        nodeType: "zone",
+        nodeTypeLabel: "子级片区",
+        dataGranularity: "子级片区",
+        name: "乌镇西栅景区",
+        province: "浙江",
+        city: "嘉兴桐乡",
+        scenicLevel: "5A",
+        annualVisitors: 478.99,
+        dataYear: 2025,
+        visitorDataBasis: "2025年乌镇西栅接待游客478.99万人次；中青旅2025年年报口径",
         ticketMode: "收费",
         ticketPrice: 150,
         scenicType: "古城/古镇/古村落",
         tileRelevance: "强：水乡屋檐/老街建筑天然承接",
         commemorationMind: "强：旅行纪念/城市记忆明确",
-        youngSpread: "强：小红书/夜游/打卡传播强",
+        youngSpread: "强：外地游客+年轻审美客群多",
         culturalEndorsement: "国家5A/世界互联网大会/江南水乡文化",
-        touristRatio: "高：外地游客为主",
-        location: "主街核心动线",
-        store: "景区官方文创店",
-        spendPower: "高：可接受79-98元",
-        display: "专区",
-        authSupport: "官方授权",
-        displaySupport: "可谈展柜/墙面/灯光",
-        businessTerms: "中：扣点需谈判，账期/保底待确认",
-        cooperationEfficiency: "中：需走景区/运营决策链",
-        promotionSupport: "中：活动/官号资源需申请",
-        exclusiveProtection: "可谈品类保护",
-        contractStability: "稳定：可谈半年以上",
+        visitorProfile: "核心收费片区，夜游、住宿和自由行消费心智更强",
+        operatingScene: "核心收费片区/夜游主场/高消费文创场景",
         productSeries: "一城一瓦/古瓦典藏/江南水乡限定",
-        dataStatus: "2025年度客流已核",
-        sourceName: "文化和旅游部5A名单；中青旅2025年年报公开披露",
+        dataStatus: "2025子级客流已核",
+        verificationStatus: "multi_channel_verified",
+        verificationStatusLabel: "子级客流/票价已核",
+        verificationSourceCount: 2,
+        verificationChannels: ["中青旅2025年年报公开披露", "乌镇官方票务政策"],
+        dataTrustLevel: "可作公开基础库口径，商务前仍需复核店位",
+        trafficVerified: true,
+        businessDataUsable: true,
+        sourceName: "中青旅2025年年报公开披露；乌镇旅游官方网站票务政策",
         sourceUrl: "https://www.cyts.com/news/getDetail?id=11573",
-        sourceCheckedAt: "2026-07-05",
-        note: "已是寻迹万物品牌故事中的强样板候选，2025客流已更新，优先核实官方合作入口与扣点。"
+        sourceCheckedAt: "2026-07-07",
+        note: "适合作为乌镇样板优先片区，但仍需销售补充具体店位、扣点、授权和陈列。"
+      },
+      {
+        id: "S001-DZ",
+        parentId: "S001",
+        parentName: "乌镇",
+        subAreaName: "东栅",
+        nodeType: "zone",
+        nodeTypeLabel: "子级片区",
+        dataGranularity: "子级片区",
+        name: "乌镇东栅景区",
+        province: "浙江",
+        city: "嘉兴桐乡",
+        scenicLevel: "5A",
+        annualVisitors: 206.06,
+        dataYear: 2025,
+        visitorDataBasis: "2025年乌镇东栅接待游客206.06万人次；中青旅2025年年报口径",
+        ticketMode: "收费",
+        ticketPrice: 110,
+        scenicType: "古城/古镇/古村落",
+        tileRelevance: "强：水乡屋檐/老街建筑天然承接",
+        commemorationMind: "中高：有伴手礼或城市礼物心智",
+        youngSpread: "中：团队游或本地休闲为主",
+        culturalEndorsement: "国家5A/江南水乡文化",
+        visitorProfile: "传统观光和团队游占比可能更高，需现场核实停留时长和消费转化",
+        operatingScene: "收费观光片区/团队游动线/小批量测试场景",
+        productSeries: "一城一瓦/江南水乡限定/手绘冰箱贴",
+        dataStatus: "2025子级客流已核",
+        verificationStatus: "multi_channel_verified",
+        verificationStatusLabel: "子级客流/票价已核",
+        verificationSourceCount: 2,
+        verificationChannels: ["中青旅2025年年报公开披露", "乌镇官方票务政策"],
+        dataTrustLevel: "可作公开基础库口径，商务前仍需复核店位",
+        trafficVerified: true,
+        businessDataUsable: true,
+        sourceName: "中青旅2025年年报公开披露；乌镇旅游官方网站票务政策",
+        sourceUrl: "https://www.cyts.com/news/getDetail?id=11573",
+        sourceCheckedAt: "2026-07-07",
+        note: "不应直接套用西栅消费心智；重点看团队游动线中的停留和付款效率。"
+      },
+      {
+        id: "S001-NZ",
+        parentId: "S001",
+        parentName: "乌镇",
+        subAreaName: "南栅",
+        nodeType: "zone",
+        nodeTypeLabel: "子级片区",
+        dataGranularity: "子级片区线索",
+        name: "乌镇南栅历史街区",
+        province: "浙江",
+        city: "嘉兴桐乡",
+        scenicLevel: "无/其他",
+        annualVisitors: 0,
+        annualVisitorsUnknown: true,
+        dataYear: 2025,
+        visitorDataBasis: "不清楚：公开来源未找到南栅2025单点年客流；不得继承父级/西栅/东栅客流",
+        ticketMode: "免费",
+        ticketPrice: 0,
+        scenicType: "古街/老街/非遗街区",
+        tileRelevance: "强：有古建/屋檐/街巷可讲",
+        commemorationMind: "中高：有伴手礼或城市礼物心智",
+        youngSpread: "中高：亲子/年轻/城市漫游客混合",
+        culturalEndorsement: "有地方故事但官方标签弱",
+        visitorProfile: "免费开放街区，真实转化取决于具体店位和游客停留",
+        operatingScene: "免费老街/外围消费场景/需低成本试点",
+        inheritWarning: "南栅不得继承西栅478.99万人次或乌镇父级685.05万人次作为商务依据",
+        productSeries: "城市限定/手绘冰箱贴/低成本试点款",
+        dataStatus: "不清楚：子级客流待销售复核",
+        verificationStatus: "needs_recheck",
+        verificationStatusLabel: "不清楚：缺少子级年客流",
+        verificationSourceCount: 1,
+        verificationChannels: ["乌镇旅游官方网站票务政策线索"],
+        dataTrustLevel: "仅作销售线索，不作商务依据",
+        trafficVerified: false,
+        businessDataUsable: false,
+        unknownFields: ["2025子级年客流", "节假日/平日客流结构", "具体店位转化"],
+        sourceName: "销售线索待复核；乌镇旅游官方网站票务政策用于区分收费片区",
+        sourceUrl: "https://www.wuzhen.com.cn/web/traver/info",
+        sourceCheckedAt: "2026-07-07",
+        note: "适合作为细分线索，不适合作为S级样板直接判断；先核店位和真实客流。"
+      },
+      {
+        id: "S001-WC",
+        parentId: "S001",
+        parentName: "乌镇",
+        subAreaName: "乌村",
+        nodeType: "zone",
+        nodeTypeLabel: "子级片区",
+        dataGranularity: "子级片区线索",
+        name: "乌镇乌村",
+        province: "浙江",
+        city: "嘉兴桐乡",
+        scenicLevel: "无/其他",
+        annualVisitors: 0,
+        annualVisitorsUnknown: true,
+        dataYear: 2025,
+        visitorDataBasis: "不清楚：公开来源未找到乌村2025单点年客流；不得继承父级/西栅/东栅客流",
+        ticketMode: "待核",
+        ticketPrice: 0,
+        ticketPriceUnknown: true,
+        scenicType: "古城/古镇/古村落",
+        tileRelevance: "中：需通过地方故事转译",
+        commemorationMind: "中高：有伴手礼或城市礼物心智",
+        youngSpread: "中高：亲子/年轻/城市漫游客混合",
+        culturalEndorsement: "有地方故事但官方标签弱",
+        visitorProfile: "度假/亲子/住宿型场景，需核实店位是否承接稳定消费",
+        operatingScene: "度假村/亲子住宿配套/待核消费场景",
+        inheritWarning: "乌村不得继承西栅/东栅客流；应单独核实住宿和到店消费数据",
+        productSeries: "家庭礼品/城市限定/轻量定制",
+        dataStatus: "不清楚：子级客流与标准单票待销售复核",
+        verificationStatus: "needs_recheck",
+        verificationStatusLabel: "不清楚：客流/单票待核",
+        verificationSourceCount: 1,
+        verificationChannels: ["乌镇官方预订平台票务产品线索"],
+        dataTrustLevel: "仅作销售线索，不作商务依据",
+        trafficVerified: false,
+        businessDataUsable: false,
+        unknownFields: ["2025子级年客流", "标准单票/套餐口径", "住宿客转店消费"],
+        sourceName: "销售线索待复核；乌镇官方预订平台票务产品线索",
+        sourceUrl: "https://www.ewuzhen.com/ticket/list",
+        sourceCheckedAt: "2026-07-07",
+        note: "不是传统主街古镇客流，需按乌村自己的客群和消费动线判断。"
       },
       {
         id: "S002",
@@ -915,7 +1206,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "文化和旅游部5A名单；故宫年度公开资料待补",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "适合作为标杆逻辑，不适合第一阶段低成本快速切入。"
       },
       {
@@ -949,7 +1240,7 @@
         dataStatus: "年度客流为公开参考口径",
         sourceName: "文化和旅游部5A名单；公开客流参考口径待补强",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "免费开放导致消费心智要看具体店位，重点看出口/主街/官方文创店。"
       },
       {
@@ -983,7 +1274,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "文化和旅游部5A名单；景区年度客流待补",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "要区分旅游型年轻祈愿客与本地香火客，店位比总客流更关键。"
       },
       {
@@ -1017,7 +1308,7 @@
         dataStatus: "片区客流参考口径",
         sourceName: "文化和旅游部5A名单；公开片区客流线索待补强",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "流量强但同质化商品多，需争取强陈列和避免低价大货围剿。"
       },
       {
@@ -1051,7 +1342,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "文化和旅游部5A名单；公开客流线索待补强",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "适合做城市样板，但要避开低客单旅游商品店。"
       },
       {
@@ -1085,7 +1376,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "文化和旅游部5A名单；景区年度客流待补",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "适合先做轻陈列/爆款测试，再决定是否做深度定制。"
       },
       {
@@ -1119,7 +1410,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "文化和旅游部5A名单；景区年度客流待补",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "产品表达可以绑定城墙、城门、屋檐细节，适合做城市限定。"
       },
       {
@@ -1153,7 +1444,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "文化和旅游部5A名单；单园区客流待补",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "文化适配极强，关键是授权与门店位置。"
       },
       {
@@ -1187,7 +1478,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "公开街区客流线索待补强",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "渠道试点友好，但低价伴手礼竞争明显，需靠设计和陈列抢心智。"
       },
       {
@@ -1221,7 +1512,7 @@
         dataStatus: "年度客流待复核",
         sourceName: "公开街区客流线索待补强",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "适合渠道快速试点，重点看门店动线和同类产品价格带。"
       },
       {
@@ -1255,12 +1546,12 @@
         dataStatus: "年度客流待复核",
         sourceName: "公开街区客流线索待补强",
         sourceUrl: "https://sjfw.mct.gov.cn/site/dataservice/rural?type=10",
-        sourceCheckedAt: "2026-07-05",
+        sourceCheckedAt: "2026-07-06",
         note: "文创消费力强，但要把瓦片从陶瓷大类里做出差异。"
       },
       ...nationalScenicCandidates,
       ...expandedScenicCandidates
-    ].map((spot) => ({
+    ]).map((spot) => ({
       ...spot,
       location: "",
       store: "",
@@ -1280,6 +1571,492 @@
       manpowerResources: "",
       officialTrafficResources: ""
     })),
+    fulfillmentRecords: [
+      {
+        id: "CG-2026-004",
+        code: "CG-2026-004",
+        pointName: "宜兴瑶湖小镇",
+        folderName: "CG-2026-004（宜兴瑶湖小镇）",
+        cooperationType: "采购/定制待核",
+        sourceFolderToken: "JyGnfnM1IlzYNvdVWFtcaEqdnvv",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/JyGnfnM1IlzYNvdVWFtcaEqdnvv",
+        lastFileDate: "2026-07-06",
+        shipmentStatus: "已发货",
+        receiptStatus: "已签收",
+        displayStatus: "软陈已签收",
+        shipmentBatchCount: 2,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "货品签收单与回执已归档，数量待解析Excel",
+        evidenceFiles: ["2026.0610/窑湖小镇货品签收单-2026.0610.xlsx", "2026.0610/窑湖软陈物料签收表-2026.0609.xlsx", "窑湖小镇6.26回执.png", "窑湖小镇货品签收单-20260626.xlsx"],
+        exceptionTags: [],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-013",
+        code: "WP-2026-013",
+        pointName: "安徽池州九华山",
+        folderName: "WP-2026-013（安徽池州九华山）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "Lil1f5UCAl87wIdf0IRcvWO1nxe",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/Lil1f5UCAl87wIdf0IRcvWO1nxe",
+        lastFileDate: "2026-07-03",
+        shipmentStatus: "已发货",
+        receiptStatus: "已签收",
+        displayStatus: "软陈已签收",
+        shipmentBatchCount: 1,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "货品签收单已归档，数量待解析Excel",
+        evidenceFiles: ["2026.0609/九华山货品签收单-2026.0611.xlsx", "2026.0609/九华山软陈签收单-2026.0609.xlsx", "2026.0609/九华山软陈方案.pdf", "2026.0609/九华山销售话术卡.docx"],
+        exceptionTags: [],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-014",
+        code: "WP-2026-014",
+        pointName: "普陀山集福",
+        folderName: "WP-2026-014（普陀山集福）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "ZhqUfi8s1lSMtFdRImNcuOI5nHA",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/ZhqUfi8s1lSMtFdRImNcuOI5nHA",
+        lastFileDate: "2026-07-02",
+        shipmentStatus: "已发货",
+        receiptStatus: "待签收",
+        displayStatus: "软陈方案已归档",
+        shipmentBatchCount: 1,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "发货清单已归档，未见签收回执",
+        evidenceFiles: ["普陀山集福发货清单-2026.0615.xlsx", "普陀山集福软陈清单-2026.06.15.xlsx", "普陀山集福软陈方案-2026.0615.pdf", "普陀山集福销售话术卡.docx"],
+        exceptionTags: ["待签收"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-015",
+        code: "WP-2026-015",
+        pointName: "杭州清河坊鼓楼",
+        folderName: "WP-2026-015（杭州清河坊鼓楼）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "FxajfR4XNlsl5AdAOg1cbxYQnDh",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/FxajfR4XNlsl5AdAOg1cbxYQnDh",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-012",
+        code: "WP-2026-012",
+        pointName: "周庄古镇",
+        folderName: "WP-2026-012（周庄古镇）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "T9DzfUQcmlO60adlnJKcWaaYnTd",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/T9DzfUQcmlO60adlnJKcWaaYnTd",
+        lastFileDate: "2026-04-30",
+        shipmentStatus: "已发货",
+        receiptStatus: "待签收",
+        displayStatus: "待核",
+        shipmentBatchCount: 1,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "发货产品清表已归档，未见签收回执",
+        evidenceFiles: ["周庄发货产品清表-0423 .xlsx"],
+        exceptionTags: ["待签收"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-011",
+        code: "WP-2026-011",
+        pointName: "云南大理洱海",
+        folderName: "WP-2026-011（云南大理洱海）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "WaXtfypmxlVBLsdVkvycw4gWnpb",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/WaXtfypmxlVBLsdVkvycw4gWnpb",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-010",
+        code: "WP-2026-010",
+        pointName: "贵州乌江寨",
+        folderName: "WP-2026-010（贵州乌江寨）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "MxCSftZkyl5xoLdyG1GcNoUjnNg",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/MxCSftZkyl5xoLdyG1GcNoUjnNg",
+        lastFileDate: "2026-05-06",
+        shipmentStatus: "已发货",
+        receiptStatus: "待签收",
+        displayStatus: "待核",
+        shipmentBatchCount: 1,
+        shipmentQuantity: 330,
+        shipmentQuantityNote: "在线表格产品单合计330，未见签收回执",
+        evidenceFiles: ["乌江寨发货产品清表-04.25"],
+        exceptionTags: ["待签收"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-009",
+        code: "WP-2026-009",
+        pointName: "濮院时尚小镇",
+        folderName: "WP-2026-009（濮院时尚小镇）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "SRqTfGiz0lmL7cdQCeycjHz8nod",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/SRqTfGiz0lmL7cdQCeycjHz8nod",
+        lastFileDate: "2026-05-06",
+        shipmentStatus: "已发货",
+        receiptStatus: "待签收",
+        displayStatus: "待核",
+        shipmentBatchCount: 1,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "发货产品清单已归档，未见签收回执",
+        evidenceFiles: ["濮院发货产品清单表-04.27.xlsx"],
+        exceptionTags: ["待签收"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-008",
+        code: "WP-2026-008",
+        pointName: "台州府城",
+        folderName: "WP-2026-008（台州府城）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "UNYgfjTxElrlUYdppBsc9YrOnnb",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/UNYgfjTxElrlUYdppBsc9YrOnnb",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-007",
+        code: "WP-2026-007",
+        pointName: "新昌大佛寺",
+        folderName: "WP-2026-007（新昌大佛寺）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "Tzxbf4KcBl9ePZd1yhjcfkA7nre",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/Tzxbf4KcBl9ePZd1yhjcfkA7nre",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-006",
+        code: "WP-2026-006",
+        pointName: "台州国清寺",
+        folderName: "WP-2026-006（台州国清寺）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "FGQJfkk1XlqmfQdL7MWcSkNZnGh",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/FGQJfkk1XlqmfQdL7MWcSkNZnGh",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-005",
+        code: "WP-2026-005",
+        pointName: "望仙谷摊位",
+        folderName: "WP-2026-005（望仙谷摊位）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "DEkifhE7QlBYlIduNzNcDTKQnbg",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/DEkifhE7QlBYlIduNzNcDTKQnbg",
+        lastFileDate: "2026-05-23",
+        shipmentStatus: "已发货",
+        receiptStatus: "待签收",
+        displayStatus: "待核",
+        shipmentBatchCount: 5,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "多批次发货清单已归档，未见签收回执",
+        evidenceFiles: ["望仙谷发货产品清单表-04.15.xlsx", "望仙谷发货产品清单表-04.30.xlsx", "望仙谷发货产品清单表-05.22.xlsx", "望仙谷发货产品清单表-05.23.xlsx"],
+        exceptionTags: ["待签收", "多批次需核"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-004",
+        code: "WP-2026-004",
+        pointName: "北高峰法华寺",
+        folderName: "WP-2026-004（北高峰法华寺）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "WVG7f8qvYlKUFUdgjpwcdfwgnEe",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/WVG7f8qvYlKUFUdgjpwcdfwgnEe",
+        lastFileDate: "2026-05-09",
+        shipmentStatus: "已发货",
+        receiptStatus: "待签收",
+        displayStatus: "待核",
+        shipmentBatchCount: 1,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "发货产品清单已归档，未见签收回执",
+        evidenceFiles: ["法华寺发货产品清单表-05.08.xlsx"],
+        exceptionTags: ["待签收"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-003",
+        code: "WP-2026-003",
+        pointName: "灵隐寺灵妙儿",
+        folderName: "WP-2026-003（灵隐寺灵妙儿）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "ZNZ2f8N1nlyW33dNLEGcpU1Nnih",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/ZNZ2f8N1nlyW33dNLEGcpU1Nnih",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-002",
+        code: "WP-2026-002",
+        pointName: "普陀山码头点位",
+        folderName: "WP-2026-002（普陀山码头点位）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "UOQVfoaCDl8kZaduqSlcxi3ZnDc",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/UOQVfoaCDl8kZaduqSlcxi3ZnDc",
+        lastFileDate: "2026-04-30",
+        shipmentStatus: "已发货",
+        receiptStatus: "待签收",
+        displayStatus: "待核",
+        shipmentBatchCount: 2,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "两张在线发货清表已归档，未见签收回执",
+        evidenceFiles: ["三只胡普陀发货产品清表-0417 (1)", "三只胡普陀发货产品清表-0422"],
+        exceptionTags: ["待签收", "多批次需核"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-001",
+        code: "WP-2026-001",
+        pointName: "乌镇乌陶坊",
+        folderName: "WP-2026-001（乌镇乌陶坊）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "WWVZfkXt5lC3BJdNdSTcCNS7nAI",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/WWVZfkXt5lC3BJdNdSTcCNS7nAI",
+        lastFileDate: "2026-07-04",
+        shipmentStatus: "已发货",
+        receiptStatus: "已签收",
+        displayStatus: "待销售确认",
+        shipmentBatchCount: 6,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "多批次发货清单与0702签收单已归档，数量待解析Excel",
+        evidenceFiles: ["乌陶坊发货签收单0702.jpg", "乌镇乌陶坊-发货清单（签收单）0702xlsx.xlsx", "乌镇发货产品清单表-2026.0430.xlsx", "乌镇发货产品清单表-05.13.xlsx", "乌镇发货产品清单表-05.14.xlsx", "乌镇发货产品清单表-05.19.xlsx", "乌镇发货产品清单表-05.21.xlsx"],
+        exceptionTags: ["多批次需核"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "CG-2026-006",
+        code: "CG-2026-006",
+        pointName: "杭州永福寺",
+        folderName: "CG-2026-006 (杭州永福寺)",
+        cooperationType: "采购/定制待核",
+        sourceFolderToken: "PtCxfXjeDlbU31dPkUwcYKRanUh",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/PtCxfXjeDlbU31dPkUwcYKRanUh",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "CG-2026-005",
+        code: "CG-2026-005",
+        pointName: "上海施耐德电气",
+        folderName: "CG-2026-005  (上海施耐德电气)",
+        cooperationType: "采购/定制待核",
+        sourceFolderToken: "NKJsfmfZAlZn50dFkrlcTCTPn6g",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/NKJsfmfZAlZn50dFkrlcTCTPn6g",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "CG-2026-003",
+        code: "CG-2026-003",
+        pointName: "杭州西子童话",
+        folderName: "CG-2026-003（杭州西子童话）",
+        cooperationType: "采购/定制待核",
+        sourceFolderToken: "OIfbfRdnnli9qSdpWGpcgcydnWh",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/OIfbfRdnnli9qSdpWGpcgcydnWh",
+        lastFileDate: "2026-06-30",
+        shipmentStatus: "已发货",
+        receiptStatus: "已签收",
+        displayStatus: "待销售确认",
+        shipmentBatchCount: 4,
+        shipmentQuantity: 810,
+        shipmentQuantityNote: "签收单在线表格应发货数量合计810，实际收货数量待填写",
+        evidenceFiles: ["西子童话20260626签单回执.JPG", "寻迹万物文创签收单--西子童话0626", "“西子童话”发货产品清单-5.1（核对版本）", "“西子童话”发货产品清表-0430", "“西子童话”发货产品清表-0427"],
+        exceptionTags: [],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "CG-2026-002",
+        code: "CG-2026-002",
+        pointName: "北高峰灵顺寺",
+        folderName: "CG-2026-002（北高峰灵顺寺）",
+        cooperationType: "采购/定制待核",
+        sourceFolderToken: "KUyRfMhZglBJWzdfIzMcLawvnHb",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/KUyRfMhZglBJWzdfIzMcLawvnHb",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "CG-2026-001",
+        code: "CG-2026-001",
+        pointName: "龙游溪口",
+        folderName: "CG-2026-001（龙游溪口）",
+        cooperationType: "采购/定制待核",
+        sourceFolderToken: "YKk1f7stzlGvBFdAIAHcwkLin0c",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/YKk1f7stzlGvBFdAIAHcwkLin0c",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      },
+      {
+        id: "WP-2026-016",
+        code: "WP-2026-016",
+        pointName: "普陀山码头点位",
+        folderName: "WP-2026-016（普陀山码头点位）",
+        cooperationType: "寄售/点位待核",
+        sourceFolderToken: "IDfqfLPjXlfkDhdfmEacyUehnZc",
+        sourceFolderUrl: "https://www.feishu.cn/drive/folder/IDfqfLPjXlfkDhdfmEacyUehnZc",
+        lastFileDate: "",
+        shipmentStatus: "资料缺失",
+        receiptStatus: "资料缺失",
+        displayStatus: "资料缺失",
+        shipmentBatchCount: 0,
+        shipmentQuantity: null,
+        shipmentQuantityNote: "点位文件夹为空；与WP-2026-002同名点位，需核是否为新批次",
+        evidenceFiles: [],
+        exceptionTags: ["资料缺失", "同名点位需核"],
+        salesShelfStatus: "待补录",
+        salesSellStatus: "待补录",
+        salesOwner: "",
+        salesNote: ""
+      }
+    ],
     rules: {
       managementReserveRate: 0.08,
       salaryBase: 10000,
@@ -1371,6 +2148,19 @@
           commercialTerms: "不接受亏损测算、弱动线、高扣点、无保障长账期",
           approval: "需负责人特批"
         }
+      },
+      gradeCaps: {
+        enabled: false,
+        t0t1BaseRatio: 0.55,
+        t0t1LightRatio: 0.7,
+        t0t1SampleRatio: 0.85,
+        t2ResourceRatio: 0.4,
+        t2SampleRatio: 0.6,
+        t0t1BaseMaxGrade: "D",
+        t0t1LightMaxGrade: "C",
+        t0t1SampleMaxGrade: "B",
+        t2ResourceMaxGrade: "B",
+        t2SampleMaxGrade: "A"
       },
       scoring: {
         stageWeights: {
@@ -1616,22 +2406,10 @@
         ]
       },
       purchaseTiers: [
-        { productClass: "大瓦", productType: "手绘款", minQty: 1, maxQty: 9, name: "小批试采", discount: 0.62, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "手绘款", minQty: 10, maxQty: 29, name: "基础采购", discount: 0.55, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "手绘款", minQty: 30, maxQty: 49, name: "批量一档", discount: 0.5, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "手绘款", minQty: 50, maxQty: 99, name: "批量二档", discount: 0.47, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "手绘款", minQty: 100, maxQty: 99999, name: "批量三档", discount: 0.44, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "工艺款", minQty: 1, maxQty: 9, name: "小批试采", discount: 0.65, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "工艺款", minQty: 10, maxQty: 29, name: "基础采购", discount: 0.58, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "工艺款", minQty: 30, maxQty: 49, name: "批量一档", discount: 0.53, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "工艺款", minQty: 50, maxQty: 99, name: "批量二档", discount: 0.5, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "大瓦", productType: "工艺款", minQty: 100, maxQty: 99999, name: "批量三档", discount: 0.47, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "小瓦", productType: "手绘款", minQty: 1, maxQty: 9, name: "小批试采", discount: 0.62, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "小瓦", productType: "手绘款", minQty: 10, maxQty: 29, name: "基础采购", discount: 0.55, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "小瓦", productType: "手绘款", minQty: 30, maxQty: 49, name: "批量一档", discount: 0.5, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "小瓦", productType: "手绘款", minQty: 50, maxQty: 99, name: "批量二档", discount: 0.47, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "小瓦", productType: "手绘款", minQty: 100, maxQty: 99999, name: "批量三档", discount: 0.44, manualPrice: null, useManualPrice: false, enabled: true },
-        { productClass: "小瓦", productType: "工艺款", minQty: 1, maxQty: 99999, name: "非常规", discount: 0.6, manualPrice: null, useManualPrice: false, enabled: false }
+        { minQty: 0, maxQty: 49, name: "50片以下无折扣", discount: 1, manualPrice: null, useManualPrice: false, enabled: true },
+        { minQty: 50, maxQty: 149, name: "50-149片 · 5.5折", discount: 0.55, manualPrice: null, useManualPrice: false, enabled: true },
+        { minQty: 150, maxQty: 299, name: "150-299片 · 5折", discount: 0.5, manualPrice: null, useManualPrice: false, enabled: true },
+        { minQty: 300, maxQty: 999999, name: "300片以上 · 4.5折", discount: 0.45, manualPrice: null, useManualPrice: false, enabled: true }
       ],
       consignmentIncentives: [
         { minSales: 0, maxSales: 14999, decrease: 0, name: "无激励" },
@@ -1696,9 +2474,10 @@
         { minCoverage: 0, factor: 0.3 }
       ],
       ui: {
-        scoringModelVersion: "market-entry-v8",
-        scoringModelName: "市场开拓 V8：10分制T0优先评分",
-        scoringModelNote: "T0/T1/T2按50/45/5大类权重折算到100分，每个评分小模块统一10分制；规则参数继续管理计分、封顶、价带、政策和提成口径。",
+        scoringModelVersion: "market-entry-v9",
+        purchaseTierModelVersion: "single-sku-quantity-v1",
+        scoringModelName: "市场开拓 V9：分线评级+显式封顶开关",
+        scoringModelNote: "T0/T1/T2按50/45/5大类权重折算到100分，每个评分小模块统一10分制；默认按等级分线出评级，弱项封顶需在一级域02显式开启。",
         ruleOrder: ["price", "grade", "scoring", "purchase", "commission", "sellThrough"]
       }
     },
@@ -1708,6 +2487,11 @@
       operatorName: "",
       scenario: {
         spotName: "普陀山核心文创店",
+        scenicNodeType: "point",
+        scenicParentName: "普陀山",
+        scenicSubAreaName: "核心文创店",
+        scenicOperatingScene: "寺庙/祈福消费场景",
+        scenicDataGranularity: "具体门店",
         city: "舟山",
         scenicLevel: "5A",
         annualVisitors: 1000,
